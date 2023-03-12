@@ -2,5 +2,5 @@
 ## Spotify statistics kinda like Spotify Wrapped
 
 ##### Authors:
-Daša Nosková - xnosko05 <br \>
-Eva Moresová - xmores00 <br \>
+Daša Nosková - xnosko05 <br\>
+Eva Moresová - xmores00 <br\>
