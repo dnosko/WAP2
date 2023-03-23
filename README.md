@@ -4,3 +4,7 @@
 ##### Authors:
 Daša Nosková - xnosko05 <br />
 Eva Moresová - xmores00 <br />
+
+#### Run:
+` npm -i `
+` npm run dev`
