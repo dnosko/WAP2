@@ -4,8 +4,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Spotify Statistics</h1>
-      <p> Please sign in with your spotify account:</p>
+      <h1>Ready to explore your music universe?</h1>
+      <p> First please sign in with your spotify account:</p>
       <div className="card">
         <button className="oauth">
           LOGIN WITH SPOTIFY
