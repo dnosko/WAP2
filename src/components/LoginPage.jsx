@@ -1,6 +1,7 @@
 import React from 'react';
 import { loginUrl } from '../authorization';
 import '../css/App.css'
+import '../css/LoginPage.css'
 
 
 export function LoginPage() {
