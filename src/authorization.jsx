@@ -4,13 +4,12 @@ import axios from 'axios';
 
 const client_id  = import.meta.env.VITE_CLIENT_ID;
 const client_secret = import.meta.env.VITE_CLIENT_SECRET;
-const redirectURI = 'http://localhost:5173/callback';
+const redirectURI = 'http://localhost:5173/welcome';
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const scopes = ['user-read-private',
     'user-read-email',
     'user-top-read', 'user-read-recently-played'];
 
-console.log(import.meta.env.VITE_CLIENT_ID);
 
 export const loginUrl = `${authEndpoint}?
 client_id=${client_id}

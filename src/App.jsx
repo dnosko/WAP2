@@ -1,19 +1,18 @@
-import './App.css'
-import {loginUrl} from './authorization'
+import React from 'react';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { LoginPage } from './components/LoginPage'
+import { Welcome }  from './components/Welcome';
+import './css/App.css'
 
 function App() {
-
-  return (
-    <div className="App">
-      <h1>Ready to explore your music universe?</h1>
-      <p> First please sign in with your spotify account:</p>
-      <div className="card">
-        <button className="oauth">
-          <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
-        </button>
-      </div>
-    </div>
-  )
+return (
+  <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<LoginPage />} />
+      <Route path="welcome" element={<Welcome />}/>
+      </Routes>
+      </BrowserRouter>
+  );
 }
 
 export default App
