@@ -1,0 +1,68 @@
+
+:root {
+    background-color: blueviolet;
+    color:aliceblue;
+}
+
+.heading {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}  
+
+
+.planets {
+    height: 4rem;
+    animation: rotation 10s infinite linear;
+}
+
+.earth {
+    margin-right: 17rem;
+    margin-left: 12rem;
+    margin-bottom: -3rem;
+}
+.saturn {
+    margin-left: 20rem;
+    margin-bottom: -2rem;
+}
+
+.jupiter {
+    margin-bottom: 1rem;
+    margin-bottom: 4rem;
+    margin-left: 41rem;
+}
+
+.mars {
+    margin-left: 47rem;
+}
+
+.moon{
+    margin-bottom: -8rem;
+    margin-right: 38rem;
+}
+.neptune{
+    margin-bottom: -22rem;
+    margin-right: 50rem;
+}
+
+.mercury {
+    margin-top: -50rem;
+    margin-right: 12rem;
+}
+
+.venus {
+    margin-left: 5rem;
+}
+
+.uranus{
+    margin-right: 5rem;
+    margin-bottom: -5rem;
+}
