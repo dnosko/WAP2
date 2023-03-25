@@ -1,4 +1,5 @@
 import './App.css'
+import {loginUrl} from './authorization'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
       <p> First please sign in with your spotify account:</p>
       <div className="card">
         <button className="oauth">
-          LOGIN WITH SPOTIFY
+          <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
         </button>
       </div>
     </div>
