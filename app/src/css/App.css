@@ -4,3 +4,36 @@
   padding: 2rem;
   text-align: center;
 }
+
+.click{
+  font-size: 50px;
+  color: rgba(240, 248, 255, 0.6);
+  background-color: transparent;
+}
+
+.click:hover{
+  color: rgba(0, 0, 0, 0.219);
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom {
+  position:fixed;
+   left:0rem;
+   bottom:5rem;
+   height:1rem;
+   width:100%;
+}
+
+.click.left{
+  margin-right: calc(15vw - 2rem)
+}
+
+.click.right{
+
+  margin-left: calc(15vw - 2rem)
+}

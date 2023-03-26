@@ -74,7 +74,8 @@ app.get('/callback', function(req, res) {
       console.log(response.data)
       const params = new URLSearchParams({
         access_token: access_token,
-        refresh_token: refresh_token
+        refresh_token: refresh_token,
+        state: state
       })
       res.redirect(app_url+'welcome?'+params.toString())
     })
