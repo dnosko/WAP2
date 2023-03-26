@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState, Component} from 'react';
 
 import '../css/App.css'
 import '../css/Welcome.css'
@@ -13,8 +13,9 @@ import saturn from "../assets/saturn-svgrepo-com.svg"
 import uranus from "../assets/uranus-svgrepo-com.svg"
 import venus from "../assets/venus-svgrepo-com.svg"
 
-export function Welcome() {
+export default class Welcome extends Component{
     
+    render(){
     return (
         <div className="App">
             <div>
@@ -34,5 +35,5 @@ export function Welcome() {
             <img src={uranus} className="planets uranus"></img>
                 <img src={venus} className="planets venus"></img>
         </div>
-      )
+      )}
 }
