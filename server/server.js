@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 var cookieParser = require('cookie-parser');
 const { default: axios } = require('axios');
+const { config } = require('dotenv');
 var app = express();
 app.use(cors()).use(cookieParser())
 
@@ -44,27 +45,7 @@ app.get('/auth', (req, res) => {
 
   const loginUrl = authEndpoint + params.toString()
   
-    res.redirect(loginUrl);
-
-  /*axios.post(authEndpoint, {
-    cliend_id: client_id,
-    redirect_uri: redirect_uri,
-    scope: scopes,
-    response_type: 'token',
-    show_dialog: true,
-  }).then((response) => {
-    console.log(response.data)
-    res.json({
-      accessToken: response.data.access_token,
-      token_type: response.data.token_type,
-      expiresIn: response.data.expires_in,
-      refreshToken: response.data.refresh_token,
-      state: state,
-    })
-  }).catch ((err) => {
-    console.log('error: ', err);
-    res.status(500).json({ message: 'Internal server error' });
-  })*/
+  res.redirect(loginUrl);
 })
 
 app.get('/callback', function(req, res) {
@@ -87,12 +68,15 @@ app.get('/callback', function(req, res) {
   }, {headers: header}
   ).then((response) => {
     console.log(response.data)
-    res.json({
-      accessToken: response.data.access_token,
-      token_type: response.data.token_type,
-      expiresIn: response.data.expires_in,
-      refreshToken: response.data.refresh_token,
-      scope: response.data.scope,
+    let access_token = response.data.access_token
+    let refresh_token = response.data.refresh_token
+    axios.get('https://api.spotify.com/v1/me', { headers: { 'Authorization': 'Bearer ' + access_token } }).then((response) => {
+      console.log(response.data)
+      const params = new URLSearchParams({
+        access_token: access_token,
+        refresh_token: refresh_token
+      })
+      res.redirect(app_url+'welcome?'+params.toString())
     })
   }).catch ((err) => {
     console.log('error: ', err);
