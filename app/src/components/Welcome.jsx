@@ -16,7 +16,9 @@ import venus from "../assets/venus-svgrepo-com.svg"
 
 export function Welcome(props) {
     const [access_token, setAccessToken] = useState(props.access_token);
+    const [refresh_token, setRefreshToken] = useState(localStorage.getItem('refresh_token') || null);
     const [searchParams] = useSearchParams();
+    console.log(searchParams.get('refresh_token'))
     let token;
 
     useEffect(() => {
@@ -34,39 +36,23 @@ export function Welcome(props) {
         navigate(path);
     }
 
-    if (props.access_token == null)
-    {
-        return (
-            <div className="App">
-                <div className='center'>
-                
-                <h1>Access not granted!</h1>
-                    
-                </div>
-        </div>
-        )
-    }
-
     document.getElementById("body").style.background = "blueviolet";
     document.getElementById("body").style.color = 'aliceblue'
 
     
     return (
         <div onClick={routeChange} onDragExit={routeChange} className="App next">
-            <div >
-            <img src={saturn} className="planets saturn "></img>
-            <img src={earth} className="planets earth"></img>
-            <img src={moon} className="planets moon"></img>
-            </div>
-            <img src={neptune} className="planets neptune"></img>
-            <div className="heading">
-            <img src={jupiter} className="planets jupiter"></img>
-                <h1>Ready? Let's dive in!</h1>
-                <img src={mars} className="planets mars"></img>
-            </div>
-            <img src={mercury} className="planets mercury"></img>
-            <img src={uranus} className="planets uranus"></img>
-                <img src={venus} className="planets venus"></img>
+            {props.access_token == null? <h1>Access not granted!</h1> :
+            <><div>
+                    <img src={saturn} className="planets saturn "></img>
+                    <img src={earth} className="planets earth"></img>
+                    <img src={moon} className="planets moon"></img>
+                </div><img src={neptune} className="planets neptune"></img><div className="heading">
+                        <img src={jupiter} className="planets jupiter"></img>
+                        <h1>Ready? Let's dive in!</h1>
+                        <img src={mars} className="planets mars"></img>
+                    </div><img src={mercury} className="planets mercury"></img><img src={uranus} className="planets uranus"></img><img src={venus} className="planets venus"></img></>
+            }
             </div>
       )
 }
