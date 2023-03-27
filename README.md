@@ -7,8 +7,9 @@ Eva Moresová - xmores00 <br />
 
 #### Run server:
 `cd server` <br />
-` npm start`
+`npm -i ` <br />
+`npm start`
 #### Run app:
 `cd app` <br />
-` npm -i ` <br />
-` npm run dev`
+`npm -i ` <br />
+`npm run dev`
