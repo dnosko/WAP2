@@ -3,8 +3,12 @@ import '../css/App.css'
 import '../css/LoginPage.css'
 
 
-class LoginPage extends Component{
-  render() {
+function LoginPage(props) {
+
+  document.getElementById("body").style.background = "white";
+  document.getElementById("body").style.color = '#242424'
+
+
     return (
       <div className="App">
         <h1>Ready to explore your music universe?</h1>
@@ -15,7 +19,7 @@ class LoginPage extends Component{
           </button>
         </div>
       </div>
-    )}
+    )
 }
 
 

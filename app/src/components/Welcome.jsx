@@ -1,6 +1,6 @@
-import { React, useState, Component} from 'react';
+import { React, useState, Component, useEffect} from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../userauth'
 import '../css/App.css'
 import '../css/Welcome.css'
 
@@ -14,8 +14,19 @@ import saturn from "../assets/saturn-svgrepo-com.svg"
 import uranus from "../assets/uranus-svgrepo-com.svg"
 import venus from "../assets/venus-svgrepo-com.svg"
 
-export function Welcome() {
+export function Welcome(props) {
+    const [access_token, setAccessToken] = useState(props.access_token);
     const [searchParams] = useSearchParams();
+    let token;
+
+    useEffect(() => {
+        if (access_token == null){
+            token = searchParams.get('access_token')
+            setAccessToken(token)
+            localStorage.setItem('access_token',token)
+        }
+      },[access_token]);
+    
 
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
@@ -23,7 +34,7 @@ export function Welcome() {
         navigate(path);
     }
 
-    if (!searchParams.has('access_token') || !searchParams.has('refresh_token') || !searchParams.has('state'))
+    if (props.access_token == null)
     {
         return (
             <div className="App">
@@ -36,6 +47,10 @@ export function Welcome() {
         )
     }
 
+    document.getElementById("body").style.background = "blueviolet";
+    document.getElementById("body").style.color = 'aliceblue'
+
+    
     return (
         <div onClick={routeChange} onDragExit={routeChange} className="App next">
             <div >
@@ -52,6 +67,6 @@ export function Welcome() {
             <img src={mercury} className="planets mercury"></img>
             <img src={uranus} className="planets uranus"></img>
                 <img src={venus} className="planets venus"></img>
-        </div>
+            </div>
       )
 }

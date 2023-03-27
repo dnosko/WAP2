@@ -4,7 +4,10 @@ const cors = require('cors');
 var cookieParser = require('cookie-parser');
 const { default: axios } = require('axios');
 const { config } = require('dotenv');
+const { access } = require('graceful-fs');
 var app = express();
+
+
 app.use(cors()).use(cookieParser())
 
 const app_url = process.env.APP_URL
@@ -79,6 +82,13 @@ app.get('/callback', function(req, res) {
       })
       res.redirect(app_url+'welcome?'+params.toString())
     })
+    /*res.json({
+      accessToken: response.data.access_token,
+      token_type: response.data.token_type,
+      expiresIn: response.data.expires_in,
+      refreshToken: response.data.refresh_token
+    })
+    res.redirect(app_url+'welcome')*/
   }).catch ((err) => {
     console.log('error: ', err);
     res.status(500).json({ message: 'Internal server error' });
