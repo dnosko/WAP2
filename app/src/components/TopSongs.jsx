@@ -1,3 +1,4 @@
+import ArrowButton from './ArrowButton';
 
 export function TopSongs(props) {
     return (
@@ -6,8 +7,8 @@ export function TopSongs(props) {
             </a>
             { props.access_token == null ?  <h1>Not granted</h1> : <h1>Hi</h1> }
             <div className="bottom">
-                <a href="/welcome" className="click left">«</a>
-                <a className="click right">»</a>
+                <ArrowButton link="/welcome" direction="left"></ArrowButton>
+                <ArrowButton link="" direction="right"></ArrowButton>
             </div>
         </div>
     )
