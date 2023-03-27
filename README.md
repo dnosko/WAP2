@@ -5,6 +5,10 @@
 Daša Nosková - xnosko05 <br />
 Eva Moresová - xmores00 <br />
 
-#### Run:
-` npm -i `
+#### Run server:
+`cd server` <br />
+` npm start`
+#### Run app:
+`cd app` <br />
+` npm -i ` <br />
 ` npm run dev`
