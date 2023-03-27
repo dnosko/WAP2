@@ -25,6 +25,7 @@ export function Welcome(props) {
         if (access_token == null){
             token = searchParams.get('access_token')
             setAccessToken(token)
+            props.handler_token(token)
             localStorage.setItem('access_token',token)
         }
       },[access_token]);
@@ -42,7 +43,7 @@ export function Welcome(props) {
     
     return (
         <div onClick={routeChange} onDragExit={routeChange} className="App next">
-            {props.access_token == null? <h1>Access not granted!</h1> :
+            {access_token == null? <h1>Access not granted!</h1> :
             <><div>
                     <img src={saturn} className="planets saturn "></img>
                     <img src={earth} className="planets earth"></img>

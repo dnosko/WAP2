@@ -13,7 +13,7 @@ return (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="welcome" element={<Welcome access_token={access_token} />} />
+      <Route path="welcome" element={<Welcome access_token={access_token} handler_token={setAccessToken} />} />
       <Route path="TopSongs" element={<TopSongs access_token={access_token } />}/>
       </Routes>
       </BrowserRouter>
