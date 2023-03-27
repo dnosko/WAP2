@@ -82,18 +82,28 @@ app.get('/callback', function(req, res) {
       })
       res.redirect(app_url+'welcome?'+params.toString())
     })
-    /*res.json({
-      accessToken: response.data.access_token,
-      token_type: response.data.token_type,
-      expiresIn: response.data.expires_in,
-      refreshToken: response.data.refresh_token
-    })
-    res.redirect(app_url+'welcome')*/
   }).catch ((err) => {
     console.log('error: ', err);
     res.status(500).json({ message: 'Internal server error' });
   })
 
+});
+
+app.get('/refresh', function(req, res) {
+
+  var refresh_token = req.query.refresh_token;
+
+  axios.post(token_endpoint, {
+    grant_type: 'refresh_token',
+    refresh_token: refresh_token
+  }, { headers: header })
+    .then((response) => {
+      console.log(response.data)
+      var access_token = response.data.access_token;
+      res.send({
+        'access_token': access_token
+      });
+  });
 });
 
 app.listen(3001)
