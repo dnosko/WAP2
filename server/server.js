@@ -98,10 +98,10 @@ app.get('/refresh', function(req, res) {
     refresh_token: refresh_token
   }, { headers: header })
     .then((response) => {
-      console.log(response.data)
+      console.log(response)
       var access_token = response.data.access_token;
       res.send({
-        'access_token': access_token
+        'access_token': access_token,
       });
   });
 });
