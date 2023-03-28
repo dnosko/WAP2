@@ -2,8 +2,7 @@ import { React, useState, useEffect, Component, useCallback} from 'react';
 import '../css/App.css'
 import '../css/LoginPage.css'
 
-
-function LoginPage(props) {
+function LoginPage() {
 
   document.getElementById("body").style.background = "white";
   document.getElementById("body").style.color = '#242424'

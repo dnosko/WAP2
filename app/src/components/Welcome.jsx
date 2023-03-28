@@ -1,5 +1,5 @@
-import { React, useState, Component, useEffect} from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { React} from 'react';
+import {  useNavigate } from 'react-router-dom';
 import { useAuth } from '../userauth'
 import '../css/App.css'
 import '../css/Welcome.css'
@@ -15,22 +15,8 @@ import uranus from "../assets/uranus-svgrepo-com.svg"
 import venus from "../assets/venus-svgrepo-com.svg"
 
 export function Welcome(props) {
-    const [access_token, setAccessToken] = useState(props.access_token);
-    const [refresh_token, setRefreshToken] = useState(localStorage.getItem('refresh_token') || null);
-    const [searchParams] = useSearchParams();
-    console.log(searchParams.get('refresh_token'))
-    let token;
-
-    useEffect(() => {
-        if (access_token == null){
-            token = searchParams.get('access_token')
-            setAccessToken(token)
-            props.handler_token(token)
-            localStorage.setItem('access_token',token)
-        }
-      },[access_token]);
+    let access_token = useAuth()
     
-
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
         let path = `/TopSongs`; 
