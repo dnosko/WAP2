@@ -3,8 +3,6 @@ const express = require('express');
 const cors = require('cors');
 var cookieParser = require('cookie-parser');
 const { default: axios } = require('axios');
-const { config } = require('dotenv');
-const { access } = require('graceful-fs');
 var app = express();
 
 
@@ -23,8 +21,7 @@ var header = {
   'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret)).toString('base64'),
   'Content-Type':'application/x-www-form-urlencoded',
 }
-console.log(header)
-
+var access_token, refresh_token;
 var stateKey = 'auth_state';
 
 function generateRandomString(length) {
@@ -71,17 +68,10 @@ app.get('/callback', function(req, res) {
   }, {headers: header}
   ).then((response) => {
     console.log(response.data)
-    let access_token = response.data.access_token
-    let refresh_token = response.data.refresh_token
-    axios.get('https://api.spotify.com/v1/me', { headers: { 'Authorization': 'Bearer ' + access_token } }).then((response) => {
-      console.log(response.data)
-      const params = new URLSearchParams({
-        access_token: access_token,
-        refresh_token: refresh_token,
-        state: state
-      })
-      res.redirect(app_url+'welcome?'+params.toString())
-    })
+    access_token = response.data.access_token
+    refresh_token = response.data.refresh_token
+    res.redirect(app_url+'welcome')
+
   }).catch ((err) => {
     console.log('error: ', err);
     res.status(500).json({ message: 'Internal server error' });
@@ -89,20 +79,32 @@ app.get('/callback', function(req, res) {
 
 });
 
-app.get('/refresh', function(req, res) {
+app.get('/token', function (req, res) {
 
-  var refresh_token = req.query.refresh_token;
+  axios.get('http://localhost:3001/refresh').then((response) => {
+    res.json({
+      access_token: response.data.access_token,
+      refresh_token: refresh_token
+    })
+  }).catch ((err) => {
+    console.log('error: ', err);
+    res.status(500).json({ message: 'Internal server error' });
+  })
+  
+ })
+
+app.get('/refresh', function(req, res) {
 
   axios.post(token_endpoint, {
     grant_type: 'refresh_token',
     refresh_token: refresh_token
   }, { headers: header })
     .then((response) => {
-      console.log(response)
-      var access_token = response.data.access_token;
-      res.send({
-        'access_token': access_token,
-      });
+      access_token = response.data.access_token;
+      res.json({
+        access_token: access_token
+        }
+      )
   });
 });
 
