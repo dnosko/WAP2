@@ -37,3 +37,50 @@
 
   margin-left: calc(15vw - 2rem)
 }
+
+img.album {
+  height: 3rem;
+  width: auto;
+  border-radius: 10%;
+}
+
+.albumImg {
+  width: 4rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.songscard {
+  width: 10rem;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: small;
+}
+
+.card.song {
+  text-align: center;
+  width: 15rem;
+  height: 3rem;
+  background-color: aliceblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a.song.text {
+  color: rgb(37, 37, 37);
+}
+
+.topSongs {
+  border: 1px solid black;
+  /*margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+  width: 21rem;
+  height: 28rem;*/
+}
+
+h2.topSongs{
+  color: #931EFF;
+  margin-bottom: 1rem;
+  font-size: xx-large;
+  text-shadow:  2px 1px #ff3232b2;
+}
