@@ -1,44 +1,39 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
+import TopSongsCard from "./TopSongsCard";
 
 export default function Songs(props) {
-  const [songs, setSongs] = useState([]);
-  useEffect(() => {
-    if (props.token) {
-      axios
-        .get("http://localhost:3001/topSongs", {
-          params: {
-            time_range: "short_term",
-            limit: 5,
-          },
-        })
-        .then((res) => {
-          console.log(res);
-          setSongs(res.data);
-        })
-        .catch(() => {
-          window.location = "/";
-        });
-    }
-  }, []);
+  const [count, setCount] = useState(0);
+  const limit = 5;
 
-  const songItems = songs.map((song) => (
-    <div class='card song' key={song.id}>
-      <div class='albumImg'>
-        <img class='album' src={song.album.images[2].url}></img>
-      </div>
-      <div class='songscard'>
-        <a class='song text'>
-          {song.name} - {song.album.artists[0].name}
-        </a>
-      </div>
-    </div>
-  ));
+  const handleClick = () => {
+    setCount((count) => (count + 1) % 3);
+  };
 
   return (
-    <div class='topSongs'>
-      <h2 class='topSongs'>Recent loves</h2>
-      {songItems}
+    <div className='grid-container' onClick={handleClick}>
+      <div className='all-time-songs'>
+        <TopSongsCard
+          token={props.token}
+          limit={limit}
+          range={"long_term"}
+          heading='So many hours spent together'
+        ></TopSongsCard>
+      </div>
+      <TopSongsCard
+        token={props.token}
+        limit={limit}
+        range={"medium_term"}
+        heading='6 months? Its getting serious'
+      ></TopSongsCard>
+      <div className='new-songs'>
+        <TopSongsCard
+          token={props.token}
+          limit={limit}
+          range={"short_term"}
+          heading='New loves at first sound'
+        ></TopSongsCard>
+      </div>
     </div>
   );
 }

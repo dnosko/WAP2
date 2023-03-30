@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const qs = require('qs')
 var cookieParser = require("cookie-parser");
 var bodyParser = require('body-parser')
 const { default: axios } = require("axios");
@@ -127,30 +126,6 @@ app.get("/refresh", function (req, res) {
         access_token: access_token,
       });
     });
-});
-
-app.get("/topSongs", function (req, res) {
-
-  let time_range = req.query.time_range;
-  let limit = req.query.limit;
-  const params = {
-    limit: limit,
-    time_range: time_range
-  }
-
-  header = { Authorization: `Bearer ${access_token}` }
-  axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?${qs.stringify(params)}`,
-    { headers: header }
-  ).then((response) => {
-    //console.log(response.data.items)
-    console.log(response.data.items[0].href)
-    console.log(response.data.items[0].name)
-    console.log(response.data.items[0].popularity)
-    console.log(response.data.items[0].preview_url)
-    console.log(response.data.items[0].album.images[0].url)
-    res.json(response.data.items)
-  });
 });
 
 
