@@ -3,15 +3,10 @@ import axios from "axios";
 import TopSongsCard from "./TopSongsCard";
 
 export default function Songs(props) {
-  const [count, setCount] = useState(0);
   const limit = 5;
 
-  const handleClick = () => {
-    setCount((count) => (count + 1) % 3);
-  };
-
   return (
-    <div className='grid-container' onClick={handleClick}>
+    <div className='grid-container'>
       <div className='all-time-songs'>
         <TopSongsCard
           token={props.token}
