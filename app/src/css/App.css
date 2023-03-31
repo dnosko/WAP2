@@ -94,7 +94,7 @@ h2.top-songs{
 }
 
 .grid-container {
-  /*border: 1px solid black;*/
+  border: 1px solid black;
   display: grid;
   grid: 32rem / auto auto auto;
   grid-gap:10rem;
@@ -120,4 +120,32 @@ h1.top-songs {
 
 .top-songs {
   background-color: transparent;
+}
+
+.card.artist-meter{
+  border-radius: 1rem;
+  background-color: #690EBD;
+  background-image: url("paper.gif");
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+  width: 30rem;
+  margin-bottom: 10rem;
+  margin-left: 20rem
+}
+
+
+a.artist-meter{
+  color: white;
+}
+
+a.artist-meter:hover{
+  color: white
+}
+
+h2.artist-meter{
+  color: white;
+  margin-bottom: 1rem;
+  font-size: xx-large;
+  text-shadow:  1px 3px rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+  align-self: center;
 }
