@@ -1,12 +1,8 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import fetchArtists from "./fetchArtists";
-
-function average(arr) {
-  const sum = arr.reduce((acc, val) => acc + val, 0);
-  const avg = sum / arr.length;
-  return avg;
-}
+import ArtistMeterCategories from "./ArtistMeterCategories";
+import { average } from "../utils";
 
 function getText(avg_popularity) {
   if (avg_popularity >= 0.0 && avg_popularity <= 30.0)
@@ -59,6 +55,7 @@ export default function ArtistMeter(props) {
     };
     fetchArtists(props.token, params).then((data) => {
       setArtists(data);
+      console.log(artists);
     });
   }, [props.token]);
 
@@ -75,7 +72,16 @@ export default function ArtistMeter(props) {
     <div className='grid-container'>
       <div className='card artist-meter'>
         <h2 className='artist-meter'>{text.heading}</h2>
-        <a className='artist-meter'>{text.content}</a>
+        <div className='center'>
+          <a className='artist-meter'>{text.content}</a>
+        </div>
+      </div>
+      <div class='vl center'> </div>
+      <div className='artist-meter offset'>
+        <ArtistMeterCategories
+          artists={artists}
+          popularity={popularity}
+        ></ArtistMeterCategories>
       </div>
     </div>
   );
