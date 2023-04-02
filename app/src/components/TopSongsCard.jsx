@@ -46,9 +46,9 @@ export default function Songs(props) {
   ));
 
   return (
-    <div className='topSongs text'>
+    <div className='rectangle-card text'>
       <h2 className='top-songs'>{props.heading} </h2>
-      <div className='topSongs'>{songItems}</div>
+      <div className='rectangle-card'>{songItems}</div>
     </div>
   );
 }
