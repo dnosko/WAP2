@@ -2,10 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 var cookieParser = require("cookie-parser");
+var bodyParser = require('body-parser')
 const { default: axios } = require("axios");
 var app = express();
 
-app.use(cors()).use(cookieParser());
+app.use(cors()).use(cookieParser()).use(bodyParser.urlencoded({ extended: true }));
 
 const app_url = process.env.APP_URL;
 const client_id = process.env.CLIENT_ID;
@@ -91,7 +92,11 @@ app.get("/callback", function (req, res) {
 });
 
 app.get("/token", function (req, res) {
-  axios
+  res.json({
+    access_token: access_token,
+    refresh_token: refresh_token,
+  });
+  /*axios
     .get("http://localhost:3001/refresh")
     .then((response) => {
       res.json({
@@ -102,7 +107,7 @@ app.get("/token", function (req, res) {
     .catch((err) => {
       console.log("error: ", err);
       res.status(500).json({ message: "Internal server error" });
-    });
+    });*/
 });
 
 app.get("/refresh", function (req, res) {
@@ -122,5 +127,6 @@ app.get("/refresh", function (req, res) {
       });
     });
 });
+
 
 app.listen(3001);
