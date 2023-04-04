@@ -30,4 +30,8 @@ authorizedAxios.interceptors.response.use(
 	}
 );
 
-export default authorizedAxios;
+const setToken = (token) => {
+	authorizedAxios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+}
+
+export { authorizedAxios, setToken };

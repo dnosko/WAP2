@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 var cookieParser = require("cookie-parser");
 const { default: axios } = require("axios");
+const url = require('url');
 var app = express();
 
 app.use(cors()).use(cookieParser());
@@ -82,7 +83,7 @@ app.get("/callback", function (req, res) {
       console.log(response.data);
       access_token = response.data.access_token;
       refresh_token = response.data.refresh_token;
-      res.redirect(app_url + "welcome");
+	  res.redirect(app_url + '?token=' + access_token);
     })
     .catch((err) => {
       console.log("error: ", err);

@@ -4,16 +4,19 @@ import LoginPage from "./components/LoginPage";
 import { Welcome } from "./components/Welcome";
 import { TopSongs } from "./components/TopSongs";
 import "./css/App.css";
+import AuthProvider from "./components/context/authContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LoginPage />} />
-        <Route path='welcome' element={<Welcome />} />
-        <Route path='TopSongs' element={<TopSongs />} />
-      </Routes>
-    </BrowserRouter>
+	<AuthProvider>
+		<BrowserRouter>
+			<Routes>
+				<Route path='/' element={<Welcome />} />
+				<Route path='login' element={<LoginPage />} />
+				<Route path='topSongs' element={<TopSongs />} />
+			</Routes>
+		</BrowserRouter>
+	</AuthProvider>
   );
 }
 
