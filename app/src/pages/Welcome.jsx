@@ -27,12 +27,12 @@ export function Welcome(props) {
   useEffect(() => {
 	const token = searchParams.get('token');
 	if (token) {
+		localStorage.setItem('token', token);
 		setState(true);
 		setToken(token);
 	}
 	setLoading(false);
   }, [setState])
-  console.log(auth)
 
   let navigate = useNavigate();
   const routeChange = () => {

@@ -3,7 +3,8 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 const AuthProvider = (props) => {
-	const [auth, setAuth] = useState(false);
+	const initVal = localStorage.getItem('token') ? true : false;
+	const [auth, setAuth] = useState(initVal);
 
 	function setState(val) {
 		setAuth(val);
