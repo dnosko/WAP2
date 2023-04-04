@@ -5,18 +5,18 @@ import { Welcome } from "./pages/Welcome";
 import { TopSongsPage } from "./pages/TopSongsPage";
 import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
-import AuthProvider from "./components/context/authContext";
+import AuthProvider from "./context/authContext";
 
 function App() {
   return (
     <AuthProvider>
 		<BrowserRouter>
-		<Routes>
-	  		<Route path='/' element={<Welcome />} />
-			<Route path='login' element={<LoginPage />} />
-        	<Route path='topsongs' element={<TopSongsPage />} />
-        	<Route path='artists' element={<ArtistMeterPage />} />
-		</Routes>
+			<Routes>
+				<Route path='/' element={<Welcome />} />
+				<Route path='login' element={<LoginPage />} />
+				<Route path='topsongs' element={<TopSongsPage />} />
+				<Route path='artists' element={<ArtistMeterPage />} />
+			</Routes>
 		</BrowserRouter>
 	</AuthProvider>
   );

@@ -1,11 +1,10 @@
 import ArrowButton from "../components/ArrowButton";
-import { useAuth } from "../userauth";
 import { React } from "react";
 import ArtistMeter from "../components/ArtistMeter";
 import cloud from "../assets/cloud2.png";
+import Auth from "../components/Auth";
 
 export function ArtistMeterPage(props) {
-  let access_token = useAuth();
 
   document.getElementById("body").style.background = "#62BD0E";
   document.getElementById("body").style.color = "white";
@@ -16,20 +15,18 @@ export function ArtistMeterPage(props) {
     "animatedBackground 6000s linear infinite normal";
 
   return (
+	<Auth>
     <div className='App'>
       <a href='/welcome'></a>
-      {access_token == null ? (
-        <h1>Not granted</h1>
-      ) : (
         <>
           <h1 className='top-songs'>Artist Meter!</h1>
-          <ArtistMeter token={access_token}></ArtistMeter>
+          <ArtistMeter ></ArtistMeter>
         </>
-      )}
       <div className='bottom'>
         <ArrowButton link='/topsongs' direction='left'></ArrowButton>
-        <ArrowButton link='' direction='right'></ArrowButton>
+        <ArrowButton link='/' direction='right'></ArrowButton>
       </div>
     </div>
+	</Auth>
   );
 }
