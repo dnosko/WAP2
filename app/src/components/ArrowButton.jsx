@@ -9,7 +9,7 @@ export default function ArrowButton({ direction, link }) {
 	};
 
     return (
-      <button onClick={routeChange}>
+      <button onClick={routeChange} className={direction == 'right' ? 'click right' : 'click left'}>
         {direction == 'right' ? '»' : '«'}
       </button>
     );

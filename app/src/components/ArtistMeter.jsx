@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
-import fetchArtists from "./fetchArtists";
+import { getArtists } from "../api/artistsApi";
 import ArtistMeterCategories from "./ArtistMeterCategories";
 import { average } from "../utils";
 
@@ -48,15 +47,11 @@ export default function ArtistMeter(props) {
   //const [popularity, setPopularity] = useState([]);
 
   useEffect(() => {
-    var params = {
-      limit: 50,
-      time_range: "long_term",
-      offset: 0,
-    };
-    fetchArtists(props.token, params).then((data) => {
-      setArtists(data);
-      console.log(artists);
-    });
+	const fetchArtists = async () => {
+		const data = await getArtists(50, 'long_term', 0);
+		if (data) setArtists(data);
+	}
+	fetchArtists();
   }, [props.token]);
 
   /*useEffect(() => {
@@ -76,7 +71,7 @@ export default function ArtistMeter(props) {
           <a className='artist-meter'>{text.content}</a>
         </div>
       </div>
-      <div class='vl center'> </div>
+      <div className='vl center'> </div>
       <div className='artist-meter offset'>
         <ArtistMeterCategories
           artists={artists}

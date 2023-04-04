@@ -1,5 +1,9 @@
 import { React, useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { setToken } from "../api/login";
+import Auth from "../components/Auth";
+import { AuthContext } from "../context/authContext";
+
 import "../css/App.css";
 import "../css/Welcome.css";
 
@@ -12,9 +16,7 @@ import neptune from "../assets/neptune-svgrepo-com.svg";
 import saturn from "../assets/saturn-svgrepo-com.svg";
 import uranus from "../assets/uranus-svgrepo-com.svg";
 import venus from "../assets/venus-svgrepo-com.svg";
-import Auth from "./Auth";
-import { setToken } from "../api/login";
-import { AuthContext } from "./context/authContext";
+
 
 
 export function Welcome(props) {
@@ -24,7 +26,6 @@ export function Welcome(props) {
 
   useEffect(() => {
 	const token = searchParams.get('token');
-	console.log(token)
 	if (token) {
 		setState(true);
 		setToken(token);
