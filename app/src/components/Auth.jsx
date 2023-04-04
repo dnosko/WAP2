@@ -1,8 +1,17 @@
-import { useAuth } from "./hooks/useAuth";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "./context/authContext";
 
 function Auth(props) {
+	const {auth} = useContext(AuthContext);
 
-	return <>{ props.authenticated ? props.children :  <h1>Access not granted!</h1> }</>
+	console.log('auth: ' + auth)
+
+	if (props.loading) {
+		return <h1>Loading...</h1>
+	}
+
+	return <>{ auth ? props.children :  <Navigate to="/login" /> }</>
 }
 
 export default Auth;
