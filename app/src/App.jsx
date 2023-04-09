@@ -6,6 +6,7 @@ import { TopSongsPage } from "./pages/TopSongsPage";
 import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
 import AuthProvider from "./context/authContext";
+import UserStyle from "./pages/UserStyle";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 				<Route path='login' element={<LoginPage />} />
 				<Route path='topsongs' element={<TopSongsPage />} />
 				<Route path='artists' element={<ArtistMeterPage />} />
+				<Route path='mood' element={<UserStyle />} />
 			</Routes>
 		</BrowserRouter>
 	</AuthProvider>
