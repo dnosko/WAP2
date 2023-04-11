@@ -4,11 +4,40 @@ table.recommendations{
     color: white;
     box-shadow: 0 4px 8px 0 #8dff1aa4, 0 6px 20px 0 rgba(255, 255, 255, 0.3);
     border-radius: 0.5rem;
-    width: 50rem;
+    width: 20rem;
     height: 30rem;
     margin-bottom: -5rem;
+    padding-top: 1rem;
 }
 
 a.recommendations{
     color: white
+}
+
+.grid-container.time-capsule{
+    margin-top: 1rem;
+}
+
+img.album.recommendation{
+    height: 3.5rem;
+}
+
+td.albumImg{
+    margin-right: 2rem;
+    margin-left: 1rem;
+}
+
+.recommendations-border{
+    border-top: 1px solid rgb(185, 185, 185);
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    padding-top:0.5rem
+}
+
+button.time-capsule{
+    color:#8dff1a;
+    font-size: medium;
+    font-weight: bolder;
+    background-color:  #8B1AFF;
+    margin-right: 1rem;
 }

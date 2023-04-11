@@ -54,44 +54,40 @@ export default function Recommendations(props) {
   console.log(tracks);
   const songs = () => {
     return tracks.slice(0, 5).map((song, index) => (
-      <tr key={song.id}>
-        <tr>
-          <td className='albumImg'>
-            <a href={song.album.external_urls.spotify} target='_blank'>
-              <img className='album' src={song.album.images[2].url}></img>
-            </a>
-          </td>
-          <td>
-            <div className='songscard'>
-              <a
-                className='recommendations'
-                href={song.album.external_urls.spotify}
-                target='_blank'
-              >
-                {song.name}
+      <div className={`${index == 0 ? "" : " recommendations-border "}`}>
+        <tr className='recommendations ' key={song.id}>
+          <tr>
+            <td className='albumImg'>
+              <a href={song.album.external_urls.spotify} target='_blank'>
+                <img
+                  className='album recommendation'
+                  src={song.album.images[2].url}
+                ></img>
               </a>
-              <br></br>
-              <a
-                className='recommendations'
-                href={song.album.external_urls.spotify}
-                target='_blank'
-              >
-                {song.album.artists[0].name}
-              </a>
-            </div>
-          </td>
-          <td>
-            <a className='recommendations'>{song.album.name}</a>
-          </td>
-          <td>
-            <a className='recommendations'>
-              {song.album.release_date.slice(0, 4)}
-            </a>
-          </td>
-          <td className='recommendations'></td>
+            </td>
+            <td>
+              <div className='songscard'>
+                <a
+                  className='recommendations'
+                  href={song.album.external_urls.spotify}
+                  target='_blank'
+                >
+                  {song.name}
+                </a>
+                <br></br>
+                <a
+                  className='recommendations'
+                  href={song.album.external_urls.spotify}
+                  target='_blank'
+                >
+                  {song.album.artists[0].name} (
+                  {song.album.release_date.slice(0, 4)})
+                </a>
+              </div>
+            </td>
+          </tr>
         </tr>
-        <tr></tr>
-      </tr>
+      </div>
     ));
   };
 
