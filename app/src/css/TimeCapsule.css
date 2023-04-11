@@ -1,0 +1,14 @@
+
+table.recommendations{
+    background-color: #8d1affc5;
+    color: white;
+    box-shadow: 0 4px 8px 0 #8dff1aa4, 0 6px 20px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    width: 50rem;
+    height: 30rem;
+    margin-bottom: -5rem;
+}
+
+a.recommendations{
+    color: white
+}

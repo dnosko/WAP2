@@ -5,7 +5,7 @@ import Recommendations from "./Recommendations";
 export default function TimeCapsule(props) {
   const [seeds, setSeeds] = useState([]);
   const limit = 5;
-  const range = "1950-1959";
+  const range = `${props.year}-${props.year + 9}`;
 
   useEffect(() => {
     const getSeeds = async () => {
@@ -21,10 +21,8 @@ export default function TimeCapsule(props) {
   }, []);
 
   return (
-    <div className='grid-container'>
-      <div className='all-time-songs'>
-        <Recommendations seeds={seeds} />
-      </div>
+    <div className='all-time-songs'>
+      <Recommendations seeds={seeds} year={props.year} />
     </div>
   );
 }
