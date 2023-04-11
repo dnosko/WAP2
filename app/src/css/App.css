@@ -94,7 +94,7 @@ h2.top-songs{
 }
 
 .grid-container {
-  border: 1px solid firebrick;
+  /*border: 1px solid firebrick;*/
   display: grid;
   grid: 32rem / auto auto auto;
   grid-gap:10rem;
