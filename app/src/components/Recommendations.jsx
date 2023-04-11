@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from "react";
 import { recommendations } from "../api/recommendationsApi";
-import { getTracks } from "../api/getTracksApi";
 import "../css/TimeCapsule.css";
 /* Filter items by year of release date */
 function filterYear(arr, years) {
@@ -12,21 +11,21 @@ function filterYear(arr, years) {
 
 export default function Recommendations(props) {
   const [recommended, setRecommended] = useState([]);
-  const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
-  let limit = 50;
+  let limit = 100;
   let years = Array.from({ length: 10 }, (_, index) => props.year + index).map(
     String
   );
 
-  const fetchTracks = async () => {
-    const items = await getTracks(recommended);
-    if (items) setTracks(items);
-  };
+  useEffect(() => {
+    setRecommended([]);
+    setLoading(true);
+  }, [props.year]);
 
   useEffect(() => {
     if (props.seeds) {
       const getRecommendations = async () => {
+        console.log(limit);
         const rec = await recommendations(props.seeds, limit);
         if (rec) {
           console.log(rec.tracks);
@@ -36,14 +35,17 @@ export default function Recommendations(props) {
             return item.id;
           });
           // dont add duplicates
-          ids = ids.filter((item) => !recommended.some((r) => r === item));
+          filtered = filtered.filter(
+            (item) => !recommended.some((r) => r.id === item.id)
+          );
 
-          setRecommended((prevRecommended) => [...prevRecommended, ...ids]);
-          limit += 20;
+          setRecommended((prevRecommended) => [
+            ...prevRecommended,
+            ...filtered,
+          ]);
         }
       };
       if (recommended.length >= 5) {
-        fetchTracks();
         setLoading(false);
       } else {
         getRecommendations();
@@ -51,9 +53,9 @@ export default function Recommendations(props) {
     }
   }, [props.seeds, recommended]);
   //console.log(recommended);
-  console.log(tracks);
+  console.log(recommended);
   const songs = () => {
-    return tracks.slice(0, 5).map((song, index) => (
+    return recommended.slice(0, 5).map((song, index) => (
       <div className={`${index == 0 ? "" : " recommendations-border "}`}>
         <tr className='recommendations ' key={song.id}>
           <tr>

@@ -20,7 +20,7 @@ export default function TimeCapsule(props) {
     if (seeds.length == 0) {
       getSeeds();
     }
-  }, []);
+  }, [props.year]);
 
   return (
     <div className='all-time-songs'>
