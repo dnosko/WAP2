@@ -30,7 +30,7 @@ td.albumImg{
 .recommendations-border{
     border-top: 1px solid rgb(185, 185, 185);
     margin-bottom: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0rem;
     padding-top:0.5rem
 }
 
@@ -40,4 +40,27 @@ button.time-capsule{
     font-weight: bolder;
     background-color:  #8B1AFF;
     margin-right: 1rem;
+}
+
+img.heart{
+    height: 2rem;
+    margin-right: 0rem;
+}
+
+h2.time-capsule{
+    margin-top: -1rem;
+    padding-bottom: 3rem;
+    text-shadow:  3px 2px #401eff;
+}
+
+h3.time-capsule{
+    color: #ffffff;
+    font-size: 3rem;
+    background-color: transparent;
+    margin-bottom: 2rem;
+}
+
+td.heart{
+    padding-left: 1.5rem;
+    padding-right: 1rem;
 }
