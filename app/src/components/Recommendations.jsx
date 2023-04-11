@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { recommendations } from "../api/recommendationsApi";
 import "../css/TimeCapsule.css";
+import heart from "../assets/heart-svgrepo-com.svg";
 /* Filter items by year of release date */
 function filterYear(arr, years) {
   const filteredByYear = arr.filter(({ album }) =>
@@ -86,6 +87,11 @@ export default function Recommendations(props) {
                   {song.album.release_date.slice(0, 4)})
                 </a>
               </div>
+            </td>
+            <td className='heart'>
+              <a href={song.album.external_urls.spotify} target='_blank'>
+                <img className='heart' src={heart}></img>
+              </a>
             </td>
           </tr>
         </tr>
