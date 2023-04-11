@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { recommendations } from "../api/recommendationsApi";
+import { getTracks } from "../api/getTracksApi";
 import "../css/TimeCapsule.css";
 /* Filter items by year of release date */
 function filterYear(arr, years) {
@@ -11,11 +12,17 @@ function filterYear(arr, years) {
 
 export default function Recommendations(props) {
   const [recommended, setRecommended] = useState([]);
+  const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
   let limit = 50;
   let years = Array.from({ length: 10 }, (_, index) => props.year + index).map(
     String
   );
+
+  const fetchTracks = async () => {
+    const items = await getTracks(recommended);
+    if (items) setTracks(items);
+  };
 
   useEffect(() => {
     if (props.seeds) {
@@ -25,29 +32,28 @@ export default function Recommendations(props) {
           console.log(rec.tracks);
           // filter decade
           let filtered = filterYear(rec.tracks, years);
-
+          let ids = filtered.map((item) => {
+            return item.id;
+          });
           // dont add duplicates
-          filtered = filtered.filter(
-            (item) => !recommended.some((r) => r.id === item.id)
-          );
-          console.log(filtered);
-          setRecommended((prevRecommended) => [
-            ...prevRecommended,
-            ...filtered,
-          ]);
+          ids = ids.filter((item) => !recommended.some((r) => r === item));
+
+          setRecommended((prevRecommended) => [...prevRecommended, ...ids]);
           limit += 20;
         }
       };
       if (recommended.length >= 5) {
+        fetchTracks();
         setLoading(false);
       } else {
         getRecommendations();
       }
     }
   }, [props.seeds, recommended]);
-  console.log(recommended);
+  //console.log(recommended);
+  console.log(tracks);
   const songs = () => {
-    return recommended.slice(0, 5).map((song, index) => (
+    return tracks.slice(0, 5).map((song, index) => (
       <tr key={song.id}>
         <tr>
           <td className='albumImg'>
