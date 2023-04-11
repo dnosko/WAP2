@@ -5,7 +5,7 @@ import TimeCapsule from "../components/TimeCapsule";
 import "../css/TimeCapsule.css";
 
 export function DiscoverPage(props) {
-  const [showTime, setShowTime] = useState(0);
+  let [showTime, setShowTime] = useState(0);
   document.getElementById("body").style.background = "black";
   document.getElementById("body").style.color = "white";
 
@@ -32,13 +32,44 @@ export function DiscoverPage(props) {
         <h2 className='time-capsule'>Songs across time matching your taste</h2>
 
         {showTime === 0 ? (
-          buttons
+          years.map((year) => (
+            <button
+              key={year}
+              id={year}
+              className='time-capsule'
+              onClick={() => showComponent(year)}
+            >
+              {year}
+            </button>
+          ))
         ) : (
           <>
             <div className='grid-container time-capsule'>
-              <button id='0' onClick={() => showComponent(0)}></button>
-              <TimeCapsule year={1980} />
-              <button id='1990' onClick={() => showComponent(90)}></button>
+              <button
+                id='0'
+                className='time-capsule'
+                onClick={() => showComponent(0)}
+              >
+                Back
+              </button>
+              <TimeCapsule year={showTime} />
+              {showTime === 2020 ? (
+                <button
+                  id={`'${showTime + 10}'`}
+                  className='time-capsule'
+                  onClick={() => showComponent(0)}
+                >
+                  Back
+                </button>
+              ) : (
+                <button
+                  id={`'${showTime + 10}'`}
+                  className='time-capsule'
+                  onClick={() => showComponent(showTime + 10)}
+                >
+                  {showTime + 10}
+                </button>
+              )}
             </div>
           </>
         )}
