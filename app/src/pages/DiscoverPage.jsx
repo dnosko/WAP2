@@ -18,8 +18,10 @@ export function DiscoverPage(props) {
     <Auth>
       <div className='App'>
         <a href='/discover'></a>
-        <h1 className='top-songs'>These songs are your favorite!</h1>
-        <TimeCapsule />
+        <h1 className='top-songs'>Discover new songs across time!</h1>
+        <div className='grid-container'>
+          <TimeCapsule year={1950} />
+        </div>
         <div className='bottom'>
           <ArrowButton link='/artists' direction='left'></ArrowButton>
           <ArrowButton link='/' direction='right'></ArrowButton>
