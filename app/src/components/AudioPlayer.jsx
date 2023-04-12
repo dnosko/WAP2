@@ -31,11 +31,7 @@ export default function AudioPlayer(props) {
   return (
     <div>
       <audio ref={audioRef} src={props.preview_url} preload='auto' />
-      <div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ cursor: "pointer" }}
-      >
+      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {props.children}
       </div>
     </div>
