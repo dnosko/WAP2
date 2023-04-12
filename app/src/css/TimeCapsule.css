@@ -7,7 +7,7 @@ table.recommendations{
     width: 20rem;
     height: 30rem;
     margin-bottom: -5rem;
-    padding-top: 1rem;
+    padding-top: 0rem;
 }
 
 a.recommendations{
@@ -58,10 +58,32 @@ h3.time-capsule{
     color: #ffffff;
     font-size: 3rem;
     background-color: transparent;
-    margin-bottom: 2rem;
+    margin-bottom: -2rem;
+    margin-top: 0.5rem;
+    width: 10rem;
+    margin-left: 33%;
+}
+
+th.recommendation{
+    padding-top: 0rem;
+    margin-bottom: -5rem;
+    height: 2rem;
+    align-items: center;
+}
+
+tr.heading.recommendation{
+    padding-top: 0rem;
+    margin-bottom: -5rem;
+    height: 1rem;
 }
 
 td.heart{
     padding-left: 1.5rem;
     padding-right: 1rem;
+}
+
+img.refresh.recommendation{
+    height: 2rem;
+    margin-left: 80%;
+    margin-bottom: 1rem;
 }
