@@ -2,11 +2,11 @@
 table.recommendations{
     background-color: #8d1affc5;
     color: white;
-    box-shadow: 0 2px 8px 0 #ffffff28, 0 6px 100px 0 rgba(83, 255, 4, 0.349);
+    box-shadow: 0 2px 20px 0 #000000, 0 6px 200px 0 #8dff1aa1;
     border-radius: 0.5rem;
     width: 20rem;
     height: 30rem;
-    margin-bottom: -5rem;
+    margin-bottom: -6rem;
     padding-top: 0rem;
 }
 
@@ -44,8 +44,9 @@ button.time-capsule{
 }
 
 img.heart{
-    height: 2rem;
+    height: 2.5rem;
     margin-right: 0rem;
+    margin-bottom: -1rem;
 }
 
 h2.time-capsule{
@@ -62,6 +63,7 @@ h3.time-capsule{
     margin-top: 0.5rem;
     width: 10rem;
     margin-left: 33%;
+    text-shadow:  3px 3px #000000;
 }
 
 th.recommendation{
