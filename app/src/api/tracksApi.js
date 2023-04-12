@@ -1,5 +1,5 @@
 import { authorizedAxios } from "./login";
-import { average, quantile25, quantile75 } from "../utils";
+import { average, median, quantile25, quantile75, quantile, roundAllInObject } from "../utils";
 
 async function getTopTracks(limit, range) {
 	const searchParams = new URLSearchParams({
@@ -46,7 +46,7 @@ async function getTracksFeatures(trackIds) {
 }
 
 async function getFeatures() {
-	const tracks = await getTopTracks(100, 'medium_term');
+	const tracks = await getTopTracks(50, 'long_term');
 	const features = await getTracksFeatures(tracks.map(t => t.id));
 
 	const danceability = features.map(f => f.danceability);
@@ -56,18 +56,26 @@ async function getFeatures() {
 	const acousticness = features.map(f => f.acousticness)
 	const instrumentalness = features.map(f => f.acousticness)
 
-	return {
+	const params = {
 		min_danceability: quantile25(danceability),
-		max_danceability: quantile75(danceability),
+		target_danceability: average(danceability),
+		max_danceability: quantile(danceability, 1),
 		min_energy: quantile25(energy),
-		max_energy: quantile75(energy),
+		max_energy: quantile(energy, 1),
+		target_energy: average(energy),
 		min_valence: quantile25(valence),
-		max_valence: quantile75(valence),
-		min_tempo: quantile(tempo, 15),
-		max_tempo: quantile(tempo, 90),
-		target_acousticness: average(acousticness),
-		target_instrumentalness: average(instrumentalness)
+		//target_valence: average(valence),
+		max_valence: quantile(valence, 1),
+		min_tempo: quantile25(tempo),
+		max_tempo: quantile(tempo, 1),
+		target_tempo: average(tempo),
+		max_instrumentalness: quantile75(instrumentalness),
+		//min_instrumentalness: quantile25(instrumentalness)
+		//target_instrumentalness: average(instrumentalness),
+		max_acousticness: quantile75(acousticness)
 	}
+
+	return roundAllInObject(params, 3);
 }
 
 export { getTopTracks, getTracks, getTracksFeatures, getFeatures };
