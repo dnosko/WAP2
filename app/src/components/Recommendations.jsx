@@ -31,8 +31,8 @@ export default function Recommendations(props) {
     if (props.seeds) {
       let randomSeeds = getRandomItems(props.seeds, 5);
       const getRecommendations = async () => {
-        console.log(limit);
-        const rec = await recommendations(randomSeeds, limit);
+        console.log(props.features);
+        const rec = await recommendations(randomSeeds, limit, props.features);
         if (rec) {
           console.log(rec.tracks);
           // filter decade
@@ -59,7 +59,6 @@ export default function Recommendations(props) {
   }, [props.seeds, recommended]);
   console.log(recommended);
   const songs = () => {
-    //const audioRef = useRef(null);
     return recommended.slice(0, 5).map((song, index) => {
       return (
         <AudioPlayer preview_url={song.preview_url}>
