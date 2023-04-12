@@ -5,7 +5,7 @@ import "../css/TimeCapsule.css";
 
 export default function TimeCapsule(props) {
   const [seeds, setSeeds] = useState([]);
-  const limit = 5;
+  const limit = 15;
   const range = `${props.year}-${props.year + 9}`;
   const heading = props.year.toString().slice(2, 4) + "s";
 
