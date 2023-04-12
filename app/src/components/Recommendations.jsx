@@ -1,9 +1,10 @@
 import { React, useEffect, useState, useRef } from "react";
 import { recommendations } from "../api/recommendationsApi";
+import { getRandomItems } from "../utils";
 import AudioPlayer from "./AudioPlayer";
 import "../css/TimeCapsule.css";
 import heart from "../assets/heart-svgrepo-com.svg";
-import { getRandomItems } from "../utils";
+import refreshSvg from "../assets/refresh-svgrepo-com.svg";
 
 /* Filter items by year of release date */
 function filterYear(arr, years) {
@@ -16,6 +17,7 @@ function filterYear(arr, years) {
 export default function Recommendations(props) {
   const [recommended, setRecommended] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(0);
 
   let limit = 100;
   let years = Array.from({ length: 10 }, (_, index) => props.year + index).map(
@@ -28,9 +30,15 @@ export default function Recommendations(props) {
   }, [props.year]);
 
   useEffect(() => {
+    setLoading(true);
+    let recommended_sliced = recommended.slice(5);
+    setRecommended(recommended_sliced);
+  }, [refresh]);
+
+  useEffect(() => {
     if (props.seeds) {
-      let randomSeeds = getRandomItems(props.seeds, 5);
       const getRecommendations = async () => {
+        let randomSeeds = getRandomItems(props.seeds, 5);
         console.log(props.features);
         const rec = await recommendations(randomSeeds, limit, props.features);
         if (rec) {
@@ -62,7 +70,7 @@ export default function Recommendations(props) {
     return recommended.slice(0, 5).map((song, index) => {
       return (
         <AudioPlayer preview_url={song.preview_url}>
-          <div className={`${index == 0 ? "" : " recommendations-border "}`}>
+          <div className='recommendations-border'>
             <tr className='recommendations ' key={song.id}>
               <tr>
                 <td className='albumImg'>
@@ -96,6 +104,16 @@ export default function Recommendations(props) {
 
   return (
     <table className='recommendations'>
+      <tr className='heading recommendation'>
+        <th className='recommendation'>
+          <h3 className='time-capsule'>{props.heading}</h3>
+          <img
+            className='refresh recommendation'
+            src={refreshSvg}
+            onClick={() => setRefresh(refresh + 1)}
+          ></img>
+        </th>
+      </tr>
       {loading ? <a>LOADING</a> : songs()}
     </table>
   );

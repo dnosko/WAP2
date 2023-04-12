@@ -24,13 +24,11 @@ export default function TimeCapsule(props) {
 
   return (
     <div className='all-time-songs'>
-      <div className='capsule'>
-        <h3 className='time-capsule'>{heading}</h3>
-      </div>
       <Recommendations
         seeds={seeds}
         year={props.year}
         features={props.features}
+        heading={heading}
       />
     </div>
   );
