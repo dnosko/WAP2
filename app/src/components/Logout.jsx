@@ -6,8 +6,8 @@ import logoutBlack from "../assets/logout-svgrepo-com-black.svg";
 
 export default function Logout(props) {
   const handleClick = () => {
-    console.log("click");
     localStorage.removeItem("token");
+    window.location.href = "/login";
   };
 
   return (
