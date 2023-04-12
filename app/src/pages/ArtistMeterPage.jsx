@@ -3,6 +3,7 @@ import { React } from "react";
 import ArtistMeter from "../components/ArtistMeter";
 import cloud from "../assets/cloud2.png";
 import Auth from "../components/Auth";
+import Logout from "../components/Logout";
 
 export function ArtistMeterPage(props) {
   document.getElementById("body").style.background = "#62BD0E";
@@ -15,6 +16,7 @@ export function ArtistMeterPage(props) {
 
   return (
     <Auth>
+      <Logout darkMode={false} />
       <div className='App'>
         <a href='/welcome'></a>
         <>

@@ -64,15 +64,13 @@ async function getFeatures() {
 		max_energy: quantile(energy, 1),
 		target_energy: average(energy),
 		min_valence: quantile25(valence),
-		//target_valence: average(valence),
+		target_valence: average(valence),
 		max_valence: quantile(valence, 1),
 		min_tempo: quantile25(tempo),
 		max_tempo: quantile(tempo, 1),
 		target_tempo: average(tempo),
 		max_instrumentalness: quantile75(instrumentalness),
-		//min_instrumentalness: quantile25(instrumentalness)
 		//target_instrumentalness: average(instrumentalness),
-		max_acousticness: quantile75(acousticness)
 	}
 
 	return roundAllInObject(params, 3);

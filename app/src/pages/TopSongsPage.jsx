@@ -3,6 +3,7 @@ import { React } from "react";
 import Songs from "../components/Songs";
 import wave from "../assets/vecteezy_abstract-colorful-wave.png";
 import Auth from "../components/Auth";
+import Logout from "../components/Logout";
 
 export function TopSongsPage(props) {
   document.getElementById("body").style.background = "orange";
@@ -15,6 +16,7 @@ export function TopSongsPage(props) {
 
   return (
     <Auth>
+      <Logout darkMode={false} />
       <div className='App'>
         <a href='/welcome'></a>
         <h1 className='top-songs'>These songs are your favorite!</h1>
