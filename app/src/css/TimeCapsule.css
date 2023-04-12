@@ -35,11 +35,12 @@ td.albumImg{
 }
 
 button.time-capsule{
-    color:#8dff1a;
-    font-size: large;
+    color:#80ff00;
+    font-size: larger;
     font-weight: bolder;
     background-color:  #8B1AFF;
     margin-right: 1rem;
+    margin-top: 1rem;
 }
 
 img.heart{
