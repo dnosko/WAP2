@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { Navigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import logout from "../assets/logout-svgrepo-com.svg";
 import logoutBlack from "../assets/logout-svgrepo-com-black.svg";
 
