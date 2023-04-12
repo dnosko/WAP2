@@ -1,0 +1,22 @@
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import logout from "../assets/logout-svgrepo-com.svg";
+import logoutBlack from "../assets/logout-svgrepo-com-black.svg";
+
+export default function Logout(props) {
+  const handleClick = () => {
+    console.log("click");
+    localStorage.removeItem("token");
+  };
+
+  return (
+    <>
+      {props.darkMode == true ? (
+        <img className='logout' src={logoutBlack} onClick={handleClick}></img>
+      ) : (
+        <img className='logout' src={logout} onClick={handleClick}></img>
+      )}
+    </>
+  );
+}

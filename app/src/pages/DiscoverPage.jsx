@@ -5,6 +5,7 @@ import TimeCapsule from "../components/TimeCapsule";
 import { getFeatures } from "../api/tracksApi";
 import "../css/TimeCapsule.css";
 import { useEffect } from "react";
+import Logout from "../components/Logout";
 
 export function DiscoverPage(props) {
   let [showTime, setShowTime] = useState(0);
@@ -29,11 +30,10 @@ export function DiscoverPage(props) {
 
   return (
     <Auth>
+      <Logout darkMode={false} />
       <div className='App'>
-        <a href='/discover'></a>
         <h1 className='top-songs'>Time Capsule!</h1>
         <h2 className='time-capsule'>Songs across time matching your taste</h2>
-
         {showTime === 0 ? (
           years.map((year) => (
             <button

@@ -223,3 +223,10 @@ h3.artist-meter{
   width: 50%;
   text-align: center;
 }
+
+img.logout{
+  position: fixed;
+  height: 2.5rem;
+  margin-top: calc(-5vw);
+  margin-left: calc(45vw);
+}
