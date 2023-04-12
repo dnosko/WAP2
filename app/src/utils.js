@@ -18,7 +18,7 @@ const quantile = (arr, q) => {
 
 const quantile25 = (arr) => quantile(arr, 0.25);
 const quantile75 = (arr) => quantile(arr, 0.75);
-
+const median = (arr) => quantile(arr, 0.5);
 
 /* get rnadom items from an array */
 function getRandomItems(arr, num = 1) {
@@ -27,4 +27,14 @@ function getRandomItems(arr, num = 1) {
     return shuffled.slice(0, num);
 }
 
-export { average, quantile25, quantile75, quantile, getRandomItems }
+function roundAllInObject(obj, decimals) {
+    for (let prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            obj[prop] = parseFloat(obj[prop].toFixed(decimals));;
+        }
+    }
+    return obj;
+}
+
+
+export { average, quantile25, quantile75, quantile, median, getRandomItems, roundAllInObject }

@@ -17,14 +17,15 @@ async function recommendations(seeds, limit = 5, params) {
         });
     }
     else {
-        searchParams = new URLSearchParams({
+        const combinedParams = {
             seed_tracks: seeds,
             seed_artists: [],
             seed_genres: [],
             limit: limit,
             ...params
-        })
-        console.log(searchParams)
+        }
+        searchParams = new URLSearchParams(combinedParams)
+        console.log(combinedParams)
     }
     return authorizedAxios.get(`https://api.spotify.com/v1/recommendations?${searchParams.toString()}`)
         .then((res) => {
