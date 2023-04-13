@@ -6,14 +6,6 @@ import "../css/TimeCapsule.css";
 import heart from "../assets/heart-svgrepo-com.svg";
 import refreshSvg from "../assets/refresh-svgrepo-com.svg";
 
-/* Filter items by year of release date */
-function filterYear(arr, years) {
-  const filteredByYear = arr.filter(({ album }) =>
-    [...years].includes(album.release_date.slice(0, 4))
-  );
-  return filteredByYear;
-}
-
 export default function Recommendations(props) {
   const [recommended, setRecommended] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,11 +16,25 @@ export default function Recommendations(props) {
     String
   );
 
+  /* Filter items by year of release date.
+     Params:
+        arr: array to filter
+        years: array of wanted years 
+  */
+  const filterYear = (arr, years) => {
+    const filteredByYear = arr.filter(({ album }) =>
+      [...years].includes(album.release_date.slice(0, 4))
+    );
+    return filteredByYear;
+  };
+
+  // if year was changed empty recommended
   useEffect(() => {
     setRecommended([]);
     setLoading(true);
   }, [props.year]);
 
+  // on refresh get new songs
   useEffect(() => {
     setLoading(true);
     let recommended_sliced = recommended.slice(5);
@@ -36,13 +42,14 @@ export default function Recommendations(props) {
   }, [refresh]);
 
   useEffect(() => {
-    if (props.seeds) {
+    if (props.seeds.length > 0) {
+      /* Get recommended songs for given decade */
       const getRecommendations = async () => {
         let randomSeeds = getRandomItems(props.seeds, 5);
-        console.log(props.features);
+
         const rec = await recommendations(randomSeeds, limit, props.features);
+
         if (rec) {
-          console.log(rec.tracks);
           // filter decade
           let filtered = filterYear(rec.tracks, years);
           // dont add duplicates
@@ -58,6 +65,7 @@ export default function Recommendations(props) {
           ]);
         }
       };
+
       if (recommended.length >= 5) {
         setLoading(false);
       } else {
@@ -65,7 +73,7 @@ export default function Recommendations(props) {
       }
     }
   }, [props.seeds, recommended]);
-  console.log(recommended);
+
   const songs = () => {
     return recommended.slice(0, 5).map((song, index) => {
       return (

@@ -1,6 +1,11 @@
 import { authorizedAxios } from "./login";
-import { average, median, quantile25, quantile75, quantile, roundAllInObject } from "../utils";
+import { average, quantile25, quantile75, quantile, roundAllInObject } from "../utils";
 
+/* Gets top listened songs in specified time range.
+   Params:
+		limit - Number - how many songs to get
+		range - String - specified time range, can be ['long_term', 'medium_term', 'short_term']
+*/
 async function getTopTracks(limit, range) {
 	const searchParams = new URLSearchParams({
 		limit: limit,
@@ -16,6 +21,9 @@ async function getTopTracks(limit, range) {
 		});
 }
 
+/* Gets specified tracks 
+Params: 
+tracks: ids of tracks */
 async function getTracks(tracks) {
 
 	const searchParams = new URLSearchParams({
@@ -31,6 +39,10 @@ async function getTracks(tracks) {
 		});
 }
 
+/* Gets tracks features.
+Params:
+	trackIds: ids of tracks
+*/
 async function getTracksFeatures(trackIds) {
 	const searchParams = new URLSearchParams({
 		ids: trackIds,
@@ -45,6 +57,7 @@ async function getTracksFeatures(trackIds) {
 		});
 }
 
+/* Gets specific features of 50 all time top tracks ready for recommendation request */
 async function getFeatures() {
 	const tracks = await getTopTracks(50, 'long_term');
 	const features = await getTracksFeatures(tracks.map(t => t.id));
