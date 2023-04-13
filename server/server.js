@@ -83,7 +83,7 @@ app.get("/callback", function (req, res) {
       console.log(response.data);
       access_token = response.data.access_token;
       refresh_token = response.data.refresh_token;
-      res.redirect(app_url + "welcome");
+	  res.redirect(app_url + '?token=' + access_token);
     })
     .catch((err) => {
       console.log("error: ", err);
@@ -119,13 +119,14 @@ app.get("/refresh", function (req, res) {
         refresh_token: refresh_token,
       },
       { headers: header }
-    )
-    .then((response) => {
+    ).then((response) => {
       access_token = response.data.access_token;
       res.json({
         access_token: access_token,
       });
-    });
+    }).catch(err => {
+		res.status(err.response.status).json({ message: err.response.data });
+	});
 });
 
 
