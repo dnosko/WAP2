@@ -1,33 +1,18 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
+import { getTopTracks } from "../api/tracksApi";
 
 export default function Songs(props) {
   const [songs, setSongs] = useState([]);
 
-  const header = { Authorization: `Bearer ${props.token}` };
-  const params = {
-    limit: props.limit,
-    time_range: props.range,
-  };
-  const searchParams = new URLSearchParams(params);
-
-  useEffect(() => {
-    if (props.token) {
-      axios
-        .get(
-          `https://api.spotify.com/v1/me/top/tracks?${searchParams.toString()}`,
-          { headers: header }
-        )
-        .then((res) => {
-          console.log(res);
-          setSongs(res.data.items);
-        })
-        .catch((err) => {
-          console.error(err);
-          window.location = "/welcome";
-        });
-    }
-  }, []);
+  	useEffect(() => {
+		const getItems = async () => {
+			const items = await getTopTracks(props.limit, props.range);
+			if (items) {
+				setSongs(items);
+			}  
+		}
+		getItems();
+  	}, []);
 
   const songItems = songs.map((song, index) => (
     <div

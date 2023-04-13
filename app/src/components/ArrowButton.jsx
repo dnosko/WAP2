@@ -1,16 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import "../css/App.css";
 
 export default function ArrowButton({ direction, link }) {
-  if (direction == "right") {
+ 	let navigate = useNavigate();
+	
+	const routeChange = () => {
+	    navigate(link);
+	};
+
     return (
-      <a href={link} className='click right'>
-        »
-      </a>
-    );
-  } else
-    return (
-      <a href={link} className='click left'>
-        «
-      </a>
+      <button onClick={routeChange} className={direction == 'right' ? 'click right' : 'click left'}>
+        {direction == 'right' ? '»' : '«'}
+      </button>
     );
 }

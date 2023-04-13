@@ -1,11 +1,10 @@
 import ArrowButton from "../components/ArrowButton";
-import { useAuth } from "../userauth";
 import { React } from "react";
 import Songs from "../components/Songs";
 import wave from "../assets/vecteezy_abstract-colorful-wave.png";
+import Auth from "../components/Auth";
 
 export function TopSongsPage(props) {
-  let access_token = useAuth();
 
   document.getElementById("body").style.background = "orange";
   document.getElementById("body").style.color = "white";
@@ -15,21 +14,16 @@ export function TopSongsPage(props) {
   document.getElementById("body").style.backgroundPosition = "50% 80%";
 
   return (
-    <div className='App'>
-      <a href='/welcome'></a>
-      {access_token == null ? (
-        <h1>Not granted</h1>
-      ) : (
-        <>
-          <h1 className='top-songs'>These songs are your favorite!</h1>
-
-          <Songs token={access_token}></Songs>
-        </>
-      )}
-      <div className='bottom'>
-        <ArrowButton link='/welcome' direction='left'></ArrowButton>
-        <ArrowButton link='/artists' direction='right'></ArrowButton>
-      </div>
-    </div>
+	<Auth>
+		<div className='App'>
+			<a href='/welcome'></a>
+			<h1 className='top-songs'>These songs are your favorite!</h1>
+			<Songs/>
+			<div className='bottom'>
+				<ArrowButton link='/' direction='left'></ArrowButton>
+				<ArrowButton link='/artists' direction='right'></ArrowButton>
+			</div>
+		</div>
+	</Auth>
   );
 }
