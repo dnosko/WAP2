@@ -5,7 +5,7 @@ import { Welcome } from "./pages/Welcome";
 import { TopSongsPage } from "./pages/TopSongsPage";
 import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
-import AuthProvider from "./context/authContext";
+import {AuthProvider} from "./context/AuthContext";
 import UserStyle from "./pages/UserStyle";
 
 function App() {

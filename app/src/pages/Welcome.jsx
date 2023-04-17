@@ -2,7 +2,7 @@ import { React, useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { setToken } from "../api/login";
 import Auth from "../components/Auth";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../context/AuthContext";
 
 import "../css/App.css";
 import "../css/Welcome.css";
@@ -25,14 +25,14 @@ export function Welcome(props) {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-	const token = searchParams.get('token');
-	if (token) {
-		localStorage.setItem('token', token);
-		setState(true);
-		setToken(token);
-	}
-	setLoading(false);
-  }, [setState])
+    const token = searchParams.get("token");
+    if (token) {
+      localStorage.setItem("token", token);
+      setState(true);
+      setToken(token);
+    }
+    setLoading(false);
+  }, [setState]);
 
   let navigate = useNavigate();
   const routeChange = () => {
@@ -44,23 +44,23 @@ export function Welcome(props) {
   document.getElementById("body").style.color = "aliceblue";
 
   return (
-	<Auth loading={loading}>
-		<div onClick={routeChange} onDragExit={routeChange} className='App next'>
-			<div>
-			<img src={saturn} className='planets saturn '></img>
-			<img src={earth} className='planets earth'></img>
-			<img src={moon} className='planets moon'></img>
-			</div>
-			<img src={neptune} className='planets neptune'></img>
-			<div className='heading'>
-			<img src={jupiter} className='planets jupiter'></img>
-			<h1>Ready? Let's dive in!</h1>
-			<img src={mars} className='planets mars'></img>
-			</div>
-			<img src={mercury} className='planets mercury'></img>
-			<img src={uranus} className='planets uranus'></img>
-			<img src={venus} className='planets venus'></img>
-		</div>
-	</Auth>
+    <Auth loading={loading}>
+      <div onClick={routeChange} onDragExit={routeChange} className='App next'>
+        <div>
+          <img src={saturn} className='planets saturn '></img>
+          <img src={earth} className='planets earth'></img>
+          <img src={moon} className='planets moon'></img>
+        </div>
+        <img src={neptune} className='planets neptune'></img>
+        <div className='heading'>
+          <img src={jupiter} className='planets jupiter'></img>
+          <h1>Ready? Let's dive in!</h1>
+          <img src={mars} className='planets mars'></img>
+        </div>
+        <img src={mercury} className='planets mercury'></img>
+        <img src={uranus} className='planets uranus'></img>
+        <img src={venus} className='planets venus'></img>
+      </div>
+    </Auth>
   );
 }
