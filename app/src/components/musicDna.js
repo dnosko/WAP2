@@ -3,7 +3,6 @@ import { average } from "../utils";
 import { fVal } from "../pages/MusicDna";
 
 async function getDnaCategory(categories, unmatched) {
-	console.log(categories)
 	const tracks = await getTopTracks(100, 'long_term');
 	const features = await getTracksFeatures(tracks.map(t => t.id));
 

@@ -1,7 +1,7 @@
 #chart {
 	border-radius: 1rem;
 	background-color: aliceblue;
-	box-shadow: 0 4px 8px 0 rgba(147, 30, 255, 0.3), 0 6px 20px 0 rgba(147, 30, 255, 0.3);
+	box-shadow: 0 4px 8px 0 var(--box-shadow), 0 6px 20px 0 var(--box-shadow);
 	width: 25rem;
 	height: 15rem;
 }

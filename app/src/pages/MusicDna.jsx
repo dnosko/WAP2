@@ -6,26 +6,21 @@ import cloud from '../assets/cloud_white.svg';
 import fist from '../assets/fist_white.svg';
 import footprints from '../assets/footprints_white.svg';
 import glass from '../assets/magn_glass_white.svg';
-import storm from '../assets/storm_white.svg';
+import storm_swirl from '../assets/storm_white.svg';
 import wing from '../assets/wing_white.svg';
 import DnaChart from "../components/DnaChart";
-import maverick from '../assets/maverick.jpg'
+import maverick from '../assets/maverick.jpg';
+import sage from '../assets/sage.jpg';
+import storm from '../assets/storm.jpg';
+import rebel from '../assets/rebel.jpg';
+import explorer from '../assets/explorer.jpg';
+import dreamer from '../assets/dreamer.jpg';
 import { explorerDesc, maverickDesc, rebelDesc, sageDesc, stormDesc, wandererDesc } from "./categoryDescriptions";
 
 const fVal = {
 	low: 0,
 	moderate: 1,
 	high: 2,
-}
-
-const loading = {
-	title: "Loading",
-	description: 'Your DNA analysis is loading...',
-	features: {},
-	icon: '',
-	backgroundColor: 'black',
-	backgroundImg: '',
-	
 }
 
 const unmatched = {
@@ -55,12 +50,12 @@ const categories = [
 			tempo: [fVal.moderate] 
 		},
 		icon: footprints,
-		backgroundColor: '#58D68D',
-		backgroundImg: `url(${maverick})`,
-		textShadow: '#931EFF',
-		boxShadow: 'rgba(147, 30, 255, 0.3)',
+		backgroundColor: 'rgba(137,207,240, 0.6)',
+		backgroundImg: `url(${dreamer})`,
+		textShadow: '#de7681',
+		boxShadow: 'rgba(138, 79, 119, 0.3)',
 		color: 'white',
-		graphColors: ['#ED47D1', '#3814ba', '#ffab00']
+		graphColors: ['#F7838F', '#89cff0', '#ed71bd']
 		
 	},{
 		title: "Electric Explorer",
@@ -73,8 +68,13 @@ const categories = [
 			tempo: [fVal.high] 
 		},
 		description: explorerDesc,
-		background: '#C70039',
-		icon: glass
+		icon: glass,
+		backgroundColor: 'rgba(255,216,0, 1)',
+		backgroundImg: `url(${explorer})`,
+		textShadow: '#b20769',
+		boxShadow: 'rgba(178, 7, 105, 0.3)',
+		color: 'white',
+		graphColors: ['#df0983', '#ffd800', '#212143']
 	},{
 		title:  "Rhytmic Rebel",
 		features: {
@@ -87,7 +87,13 @@ const categories = [
 		},
 		description: rebelDesc,
 		background: 'white',
-		icon: fist
+		icon: fist,
+		backgroundColor: 'rgba(55,15,11, 0.75)',
+		backgroundImg: `url(${rebel})`,
+		textShadow: '#a01a0e',
+		boxShadow: 'rgba(51, 58, 113, 0.3)',
+		color: 'aliceblue',
+		graphColors: ['#6b0101', '#ff5607', '#ffc100']
 	},{
 		title: "Soulful Sage",
 		features: {
@@ -99,8 +105,13 @@ const categories = [
 			tempo: [fVal.moderate] 
 		},
 		description: sageDesc,
-		background: '#48A9A6',
-		icon: cloud
+		icon: cloud,
+		backgroundColor: 'rgba(149, 194, 127, 0.9)', // '#95c27f',
+		backgroundImg: `url(${sage})`,
+		textShadow: '#215144',
+		boxShadow: 'rgba(33,81,68, 0.3)',
+		color: 'white',
+		graphColors: ['#61a37f', '#0e1d24', '#c5de8a']
 	},{
 		title: "Brooding Storm",
 		features: {
@@ -112,13 +123,19 @@ const categories = [
 			tempo: [fVal.low, fVal.moderate] 
 		},
 		description: stormDesc,
-		background: 'white',
-		icon: storm
+		icon: storm_swirl,
+		backgroundColor: 'rgba(26, 28, 65, 0.75)',
+		backgroundImg: `url(${storm})`,
+		textShadow: '#333a71',
+		boxShadow: 'rgba(51, 58, 113, 0.3)',
+		color: 'aliceblue',
+		graphColors: ['#2e376e', '#0f1025', '#787a82']
 	},
 ]
 
 function MusicDna(props) {
-	const [category, setCategory] = useState(loading);
+	const [loading, setLoading] = useState(true);
+	const [category, setCategory] = useState(unmatched);
 	const [songs, setSongs] = useState([]);
 	const [avg, setAvg] = useState([]);
 
@@ -128,14 +145,12 @@ function MusicDna(props) {
 			setCategory(categories[0]);
 			setSongs(res.representatives);
 			setAvg(res.avg);
-			console.log('got the result')
-			console.log(res)
+			setLoading(false);
 		}
 		getIt();
 	}, []);
 
 	useEffect(() => {
-		console.log('setproperty')
 		document.documentElement.style.setProperty('--background-color', category.backgroundColor);
 		document.documentElement.style.setProperty('--text-shadow', category.textShadow);
 		document.documentElement.style.setProperty('--box-shadow', category.boxShadow);
@@ -162,6 +177,7 @@ function MusicDna(props) {
 
 	return ( 
 		<Auth>
+			{loading ? <h1>Loading your Music DNA analysis...</h1> :
 			<div className="container">
 				<div className={`user-dna-content ${category.backgroundClass}`}>
 					<h3>Your Music DNA is</h3> 
@@ -176,6 +192,7 @@ function MusicDna(props) {
 					</div>
 				</div>
 			</div>
+			}
 		</Auth>
 	)
 }
