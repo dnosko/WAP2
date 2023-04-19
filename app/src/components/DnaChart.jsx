@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import '../css/chart.css';
 
 const seriesInit = [{
-	data: [0,0,0,0,0,0],
+	data: [0,0,0,0,0],
 
 }]
 
@@ -46,8 +46,7 @@ const optionsInit = {
 		categories: [
 			['Energy'],
 			['Acoustic'], 
-			['Instrumental'],
-			['Speech'],
+			['Dance'],
 			['Valence'],
 			['Tempo']
 		],

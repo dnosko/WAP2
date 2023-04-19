@@ -11,8 +11,7 @@ async function getDnaCategory(categories, unmatched) {
 	const featureAvgs = {
 		energy: average(features.map(f => f.energy)),
 		acoustic: average(features.map(f => f.acousticness)), 
-		instrumental: average(features.map(f => f.instrumentalness)),
-		speech: average(features.map(f => f.speechiness)),
+		dance: average(features.map(f => f.danceability)),
 		valence: average(features.map(f => f.valence)),
 		tempo: normaliseTempo(average(features.map(f => f.tempo)))
 	};
