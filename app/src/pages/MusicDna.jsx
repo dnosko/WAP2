@@ -16,6 +16,7 @@ import rebel from '../assets/rebel.jpg';
 import explorer from '../assets/explorer.jpg';
 import dreamer from '../assets/dreamer.jpg';
 import { explorerDesc, maverickDesc, rebelDesc, sageDesc, stormDesc, wandererDesc } from "./categoryDescriptions";
+import ArrowButton from "../components/ArrowButton";
 
 const fVal = {
 	low: 0,
@@ -142,10 +143,12 @@ function MusicDna(props) {
 	useEffect(() => {
 		const getIt = async () => {
 			const res = await getDnaCategory(categories, unmatched);
-			setCategory(categories[0]);
-			setSongs(res.representatives);
-			setAvg(res.avg);
-			setLoading(false);
+			if (res) {
+				setCategory(res.category);
+				setSongs(res.representatives);
+				setAvg(res.avg);
+				setLoading(false);
+			}
 		}
 		getIt();
 	}, []);
@@ -158,6 +161,8 @@ function MusicDna(props) {
 		document.getElementById("body").style.backgroundImage = category.backgroundImg;
 		document.getElementById("body").style.backgroundSize = 'cover';
 	}, [category])
+
+	document.getElementById("body").style.backgroundRepeat = 'no-repeat';
 
 	const songItems = songs.map((song, index) => (
 		<div
@@ -177,22 +182,29 @@ function MusicDna(props) {
 
 	return ( 
 		<Auth>
-			{loading ? <h1>Loading your Music DNA analysis...</h1> :
-			<div className="container">
-				<div className={`user-dna-content ${category.backgroundClass}`}>
-					<h3>Your Music DNA is</h3> 
-					<img src={category.icon} className='dna-icon'></img>
-					<h1>{category.title}</h1>
-					<p>{category.description}</p>
-					<div className='dna-detail'>
-						<DnaChart avg={avg} colors={category.graphColors}/>
-						<div className='rectangle-card-dna text'>
-							<div className='rectangle-card-dna'>{songItems}</div>
+			<div className="container">	
+				<ArrowButton link='/artists' direction='left'></ArrowButton>
+				
+				{loading ? <h1 className="loading">Loading your Music DNA analysis...</h1> :
+					<div className={`user-dna-content ${category.backgroundClass}`}>
+						<h3>Your Music DNA is</h3> 
+						<img src={category.icon} className='dna-icon'></img>
+						<h1>{category.title}</h1>
+						<p>{category.description}</p>
+						<div className='dna-detail'>
+							<div className="card-desc">
+							Checkout your genetic makeup
+							<DnaChart avg={avg} colors={category.graphColors}/>
+							</div>
+							<div className='rectangle-card-dna text card-desc'>
+								These songs are just so YOU
+								<div className='rectangle-card-dna'>{songItems}</div>
+							</div>
 						</div>
 					</div>
-				</div>
+				}
+				<ArrowButton link='/' direction='right'></ArrowButton>
 			</div>
-			}
 		</Auth>
 	)
 }

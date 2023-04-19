@@ -5,10 +5,27 @@
 	--color: black;
 }
 
+.card-desc {
+	text-align: center;
+}
+
+.click.left {
+	margin: 0;
+}
+
+.click.right {
+	margin: 0;
+}
+
+.loading {
+	color: white
+}
+
 .container {
 	width: 100%;
 	height: 100%;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 }
@@ -21,7 +38,7 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 2rem;
-	width: 70%;
+	
 	border-radius: 12px;
 }
 

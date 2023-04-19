@@ -4,7 +4,9 @@ import { fVal } from "../pages/MusicDna";
 
 async function getDnaCategory(categories, unmatched) {
 	const tracks = await getTopTracks(100, 'long_term');
+	if (!tracks) return undefined;
 	const features = await getTracksFeatures(tracks.map(t => t.id));
+	if (!features) return undefined;
 
 	const featureAvgs = {
 		energy: average(features.map(f => f.energy)),
