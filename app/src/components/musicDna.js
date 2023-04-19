@@ -18,7 +18,7 @@ async function getDnaCategory(categories, unmatched) {
 	const featureGrades = {
 		energy: getFeatureGrade(average(features.map(f => f.energy))),
 		acousticness: getFeatureGrade(average(features.map(f => f.acousticness))), 
-		instrumentalness: getFeatureGrade(average(features.map(f => f.instrumentalness))),
+		danceability: getFeatureGrade(average(features.map(f => f.danceability))),
 		speechiness: getFeatureGrade(average(features.map(f => f.speechiness))),
 		valence: getFeatureGrade(average(features.map(f => f.valence))),
 		tempo:  getFeatureGrade(normaliseTempo(average(features.map(f => f.tempo)))),
@@ -65,7 +65,7 @@ function getDnaRepresentatives(tracks, features, category) {
 		const songFeats = {
 			energy: getFeatureGrade(f.energy),
 			acousticness: getFeatureGrade(f.acousticness), 
-			instrumentalness: getFeatureGrade(f.instrumentalness),
+			danceability: getFeatureGrade(f.danceability),
 			speechiness: getFeatureGrade(f.speechiness),
 			valence: getFeatureGrade(f.valence),
 			tempo:  getFeatureGrade(f.tempo, true),
