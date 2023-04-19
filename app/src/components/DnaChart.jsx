@@ -11,8 +11,6 @@ const optionsInit = {
 	colors: ['#FFFFFF'],
 	chart: {
 		id: 'dna',
-		width: '100%',
-		height: '100%',
 		type: 'bar',
 		toolbar: {
 			show: false,
@@ -46,7 +44,7 @@ const optionsInit = {
 		categories: [
 			['Energy'],
 			['Acoustic'], 
-			['Dance'],
+			['Danceability'],
 			['Valence'],
 			['Tempo']
 		],
@@ -87,7 +85,7 @@ function DnaChart(props) {
     
 	return (
 		<div id="chart">
-			<Chart options={options} series={series} type="bar" />
+			<Chart options={options} series={series} type="bar" height='100%' />
 		</div>
 	);
 }
