@@ -42,13 +42,19 @@ const categories = [
 	{
 		title: "Dreamy Wanderer",
 		description: wandererDesc, 
+		// features: {
+		// 	acousticness: [fVal.high],
+		// 	energy: [fVal.low, fVal.moderate], 
+		// 	instrumentalness: [fVal.moderate],
+		// 	speechiness: [fVal.low],
+		// 	valence: [fVal.moderate, fVal.high],
+		// 	tempo: [fVal.moderate] 
+		// },
 		features: {
 			acousticness: [fVal.high],
-			energy: [fVal.low, fVal.moderate], 
-			instrumentalness: [fVal.moderate],
-			speechiness: [fVal.low],
+			energy: [fVal.low, fVal.moderate],
 			valence: [fVal.moderate, fVal.high],
-			tempo: [fVal.moderate] 
+			tempo: [fVal.low, fVal.moderate]
 		},
 		icon: footprints,
 		backgroundColor: 'rgba(137,207,240, 0.6)',
@@ -60,13 +66,19 @@ const categories = [
 		
 	},{
 		title: "Electric Explorer",
+		// features: {
+		// 	acousticness: [fVal.low, fVal.moderate],
+		// 	energy: [fVal.high], 
+		// 	instrumentalness: [fVal.high],
+		// 	speechiness: [fVal.low],
+		// 	valence: [fVal.moderate, fVal.high],
+		// 	tempo: [fVal.high] 
+		// },
 		features: {
-			acousticness: [fVal.low, fVal.moderate],
 			energy: [fVal.high], 
-			instrumentalness: [fVal.high],
-			speechiness: [fVal.low],
 			valence: [fVal.moderate, fVal.high],
-			tempo: [fVal.high] 
+			tempo: [fVal.high],
+			danceability: [fVal.moderate, fVal.high],
 		},
 		description: explorerDesc,
 		icon: glass,
@@ -78,13 +90,20 @@ const categories = [
 		graphColors: ['#df0983', '#ffd800', '#212143']
 	},{
 		title:  "Rhytmic Rebel",
+		// features: {
+		// 	acousticness: [fVal.low],
+		// 	energy: [fVal.high], 
+		// 	instrumentalness: [fVal.low],
+		// 	speechiness: [fVal.moderate, fVal.high],
+		// 	valence: [fVal.moderate, fVal.low],
+		// 	tempo: [fVal.high] 
+		// },
 		features: {
-			acousticness: [fVal.low],
-			energy: [fVal.high], 
-			instrumentalness: [fVal.low],
-			speechiness: [fVal.moderate, fVal.high],
+			acousticness: [fVal.low, fVal.moderate],
+			energy: [fVal.high],
 			valence: [fVal.moderate, fVal.low],
-			tempo: [fVal.high] 
+			tempo: [fVal.high],
+			danceability: [fVal.high]
 		},
 		description: rebelDesc,
 		background: 'white',
@@ -99,9 +118,7 @@ const categories = [
 		title: "Soulful Sage",
 		features: {
 			acousticness: [fVal.high],
-			energy: [fVal.low, fVal.moderate], 
-			instrumentalness: [fVal.low, fVal.moderate],
-			speechiness: [fVal.moderate],
+			energy: [fVal.low, fVal.moderate],
 			valence: [fVal.high],
 			tempo: [fVal.moderate] 
 		},
@@ -115,12 +132,17 @@ const categories = [
 		graphColors: ['#61a37f', '#0e1d24', '#c5de8a']
 	},{
 		title: "Brooding Storm",
+		// features: {
+		// 	acousticness: [fVal.low],
+		// 	energy: [fVal.low, fVal.moderate], 
+		// 	instrumentalness: [fVal.low, fVal.moderate],
+		// 	speechiness: [fVal.moderate],
+		// 	valence: [fVal.low, fVal.moderate],
+		// 	tempo: [fVal.low, fVal.moderate] 
+		// },
 		features: {
-			acousticness: [fVal.low],
 			energy: [fVal.low, fVal.moderate], 
-			instrumentalness: [fVal.low, fVal.moderate],
-			speechiness: [fVal.moderate],
-			valence: [fVal.low, fVal.moderate],
+			valence: [fVal.low, fVal.moderate, fVal.high],
 			tempo: [fVal.low, fVal.moderate] 
 		},
 		description: stormDesc,
