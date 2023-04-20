@@ -1,9 +1,7 @@
-import ArrowButton from "../components/ArrowButton";
 import { React } from "react";
 import Songs from "../components/Songs";
 import wave from "../assets/vecteezy_abstract-colorful-wave.png";
-import Auth from "../components/Auth";
-import Logout from "../components/Logout";
+import PageWrapper from "../components/PageWrapper";
 
 export function TopSongsPage(props) {
   document.getElementById("body").style.background = "orange";
@@ -15,16 +13,11 @@ export function TopSongsPage(props) {
   document.getElementById("body").style.animation = "none";
 
   return (
-    <Auth>
-      <Logout darkMode={false} />
+    <PageWrapper left='/' right='/artists'>
       <div className='App'>
         <h1 className='top-songs'>These songs are your favorite!</h1>
         <Songs />
-        <div className='bottom'>
-          <ArrowButton link='/' direction='left'></ArrowButton>
-          <ArrowButton link='/artists' direction='right'></ArrowButton>
-        </div>
       </div>
-    </Auth>
+    </PageWrapper>
   );
 }
