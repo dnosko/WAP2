@@ -7,6 +7,7 @@ import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
 import AuthProvider from "./context/AuthContext";
 import MusicDnaPage from "./pages/MusicDna/MusicDnaPage";
+import PlaylistTimelinePage from "./pages/PlaylistTimeline/PlaylistTimelinePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 				<Route path='topsongs' element={<TopSongsPage />} />
 				<Route path='artists' element={<ArtistMeterPage />} />
 				<Route path='music-dna' element={<MusicDnaPage />} />
+		  		<Route path='playlist-timeline' element={<PlaylistTimelinePage/>}/>
 			</Routes>
 		</BrowserRouter>
 	</AuthProvider>
