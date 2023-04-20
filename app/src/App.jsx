@@ -7,6 +7,8 @@ import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import { DiscoverPage } from "./pages/DiscoverPage";
 import "./css/App.css";
 import AuthProvider from "./context/AuthContext";
+import MusicDnaPage from "./pages/MusicDna/MusicDnaPage";
+import PlaylistTimelinePage from "./pages/PlaylistTimeline/PlaylistTimelinePage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path='login' element={<LoginPage />} />
           <Route path='topsongs' element={<TopSongsPage />} />
           <Route path='artists' element={<ArtistMeterPage />} />
+          <Route path='music-dna' element={<MusicDnaPage />} />
+          <Route path='playlist-timeline' element={<PlaylistTimelinePage />} />
           <Route path='discover' element={<DiscoverPage />} />
         </Routes>
       </BrowserRouter>
