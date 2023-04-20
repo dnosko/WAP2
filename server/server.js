@@ -19,6 +19,7 @@ const scopes = [
   "user-read-email",
   "user-top-read",
   "user-read-recently-played",
+  "playlist-read-private",
 ];
 var header = {
   Authorization:
@@ -119,13 +120,14 @@ app.get("/refresh", function (req, res) {
         refresh_token: refresh_token,
       },
       { headers: header }
-    )
-    .then((response) => {
+    ).then((response) => {
       access_token = response.data.access_token;
       res.json({
         access_token: access_token,
       });
-    });
+    }).catch(err => {
+		res.status(err.response.status).json({ message: err.response.data });
+	});
 });
 
 
