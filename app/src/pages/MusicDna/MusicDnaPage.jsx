@@ -5,6 +5,7 @@ import '../../css/musicDna.css';
 import DnaChart from "../../components/DnaChart";
 import ArrowButton from "../../components/ArrowButton";
 import { categories, unmatched, fVal } from "./musicDnaData";
+import PageWrapper from "../../components/PageWrapper";
 
 
 function MusicDnaPage(props) {
@@ -54,11 +55,8 @@ function MusicDnaPage(props) {
 	  ));
 
 	return ( 
-		<Auth>
-			<div className="container">	
-				<ArrowButton link='/artists' direction='left'></ArrowButton>
-				
-				{loading ? <h1 className="loading">Loading your Music DNA analysis...</h1> :
+		<PageWrapper left='/artists' right='/playlist-timeline'>
+			{loading ? <h1 className="loading">Loading your Music DNA analysis...</h1> :
 					<div className={`user-dna-content ${category.backgroundClass}`}>
 						<h3>Your Music DNA is</h3> 
 						<img src={category.icon} className='dna-icon'></img>
@@ -76,9 +74,7 @@ function MusicDnaPage(props) {
 						</div>
 					</div>
 				}
-				<ArrowButton link='/playlist-timeline' direction='right'></ArrowButton>
-			</div>
-		</Auth>
+		</PageWrapper>
 	)
 }
 
