@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import Auth from "../../components/Auth";
 import { getDnaCategory } from "./musicDna";
 import '../../css/musicDna.css';
 import DnaChart from "../../components/DnaChart";
-import ArrowButton from "../../components/ArrowButton";
 import { categories, unmatched, fVal } from "./musicDnaData";
 import PageWrapper from "../../components/PageWrapper";
 

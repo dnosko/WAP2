@@ -1,5 +1,3 @@
-import Auth from "../../components/Auth";
-import ArrowButton from "../../components/ArrowButton";
 import "../../css/timeline.css";
 import { useEffect, useRef, useState } from "react";
 import { getUserPlaylists } from "../../api/playlistsApi";
