@@ -18,7 +18,6 @@ function Timeline(props) {
 	});
 
 	const points = props.items.map((i, idx) => {
-		console.log(i.release)
 		const date = new Date(i.release);
 		const dmy = `${date.getDate()}.${date.getMonth()}. ${date.getFullYear()}`
 		return (
