@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../css/dropdown.css';
 
 
 function Dropdown(props) {
-	const [selected, setSelected] = useState('...');
+	const [selected, setSelected] = useState('');
 	const [open, setOpen] = useState(false);
+
+	useEffect(() => setSelected(props.select.name), [props.select])
 
 	const toggleOpen = () => {
 		setOpen(!open);
@@ -13,10 +15,10 @@ function Dropdown(props) {
 	const handleSelect = (item) => {
 		setSelected(item.name);
 		setOpen(false);
-		props.onSelect(item.id);
+		props.onSelect(item);
 	} 
 
-	const items = props.items.map(i => (<li className='dropdown-item' onClick={() => handleSelect(i)}>{i.name}</li>));
+	const items = props.items.map((i, idx) => (<li key={idx} className='dropdown-item' onClick={() => handleSelect(i)}>{i.name}</li>));
 
 	return (<div className='dropdown'>
 		<div className='dropdown-top'>
