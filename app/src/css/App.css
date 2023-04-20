@@ -95,13 +95,27 @@ h2.top-songs{
 
 .grid-container {
   /*border: 1px solid firebrick;*/
-  display: grid;
+  display: flex;
   grid: 32rem / auto auto auto;
   grid-gap:10rem;
-  align-items: flex-end;
-  padding-bottom: 5rem;
-  margin-top: 5rem;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: top;
+	flex-wrap: wrap;
+  /*padding-bottom: 5rem;*/
+   margin-top: 5rem;
 }
+
+.grid-container.top-songs{
+  display: flex;
+  grid: 32rem / auto auto auto;
+  grid-gap:10rem;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 3rem;
+  margin-top: 3rem;
+}
+
 
 .all-time-songs {
   padding-bottom: 3rem;
@@ -111,7 +125,7 @@ h2.top-songs{
 }
 
 h1.top-songs {
-  margin-top: -3rem;
+  margin-top: 0rem;
   color: #ffffff;
   text-shadow:  3px 2px #931EFF;
   background-color: transparent;
@@ -130,7 +144,12 @@ h1.top-songs {
   margin-bottom: 1rem;
   position: relative;
   margin-left: 0rem;
-  margin-left: 1rem;
+}
+
+.content-artist-meter {
+  display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .center {
@@ -175,14 +194,17 @@ h2.artist-meter.card-heading {
 }
 
 div.artist-meter{
-  margin-bottom: -1.5rem;
+  margin-bottom: 0rem;
   width: 18rem;
+  display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-.artist-meter.offset {
-  /*border: 1px solid rgb(0, 0, 0);*/
-  margin-left: 0rem;
-  margin-left: 2.5rem;
+.grid-container.artist{
+  /*margin-right: 7rem;*/
+  padding-right: 7rem;
+  margin-top: -7rem;
 }
 
 h3.artist-meter{
@@ -222,6 +244,7 @@ h3.artist-meter{
   left: 50%;
   width: 50%;
   text-align: center;
+  display: flex;
 }
 
 img.logout{

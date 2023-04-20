@@ -17,12 +17,11 @@ export function ArtistMeterPage(props) {
   return (
     <Auth>
       <Logout darkMode={false} />
-      <div className='App'>
-        <a href='/welcome'></a>
-        <>
+      <div className='container'>
+        <div className='content-artist-meter'>
           <h1 className='top-songs'>Artist Meter!</h1>
           <ArtistMeter></ArtistMeter>
-        </>
+        </div>
         <div className='bottom'>
           <ArrowButton link='/topsongs' direction='left'></ArrowButton>
           <ArrowButton link='/music-dna' direction='right'></ArrowButton>

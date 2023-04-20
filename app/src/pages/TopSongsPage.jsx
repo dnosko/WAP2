@@ -18,7 +18,6 @@ export function TopSongsPage(props) {
     <Auth>
       <Logout darkMode={false} />
       <div className='App'>
-        <a href='/welcome'></a>
         <h1 className='top-songs'>These songs are your favorite!</h1>
         <Songs />
         <div className='bottom'>
