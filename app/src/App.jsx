@@ -6,21 +6,23 @@ import { TopSongsPage } from "./pages/TopSongsPage";
 import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
 import AuthProvider from "./context/AuthContext";
+import MusicDnaPage from "./pages/MusicDna/MusicDnaPage";
 import PlaylistTimelinePage from "./pages/PlaylistTimeline/PlaylistTimelinePage";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Welcome />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='topsongs' element={<TopSongsPage />} />
-          <Route path='artists' element={<ArtistMeterPage />} />
-		  <Route path='playlist-timeline' element={<PlaylistTimelinePage/>}/>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+		<BrowserRouter>
+			<Routes>
+				<Route path='/' element={<Welcome />} />
+				<Route path='login' element={<LoginPage />} />
+				<Route path='topsongs' element={<TopSongsPage />} />
+				<Route path='artists' element={<ArtistMeterPage />} />
+				<Route path='music-dna' element={<MusicDnaPage />} />
+		  		<Route path='playlist-timeline' element={<PlaylistTimelinePage/>}/>
+			</Routes>
+		</BrowserRouter>
+	</AuthProvider>
   );
 }
 
