@@ -1,14 +1,8 @@
 import { getPlaylistItems } from "../../api/playlistsApi";
 
-
 async function getTimelineItems(currentPlaylistId) {
 	const items = await getPlaylistItems(currentPlaylistId);
-	
-	if (items) {
-		return processTracks(items);
-	}
-	return [];
-	
+	return items ? processTracks(items) : [];
 }
 
 const processTracks = (items) => {
@@ -17,7 +11,6 @@ const processTracks = (items) => {
 		track: item.track
 	}))
 	.sort((a, b) => (a.release > b.release) ? 1 : -1);
-	console.log(res);
 	return res;
 }
 
