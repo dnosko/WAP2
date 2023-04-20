@@ -6,7 +6,7 @@ import { TopSongsPage } from "./pages/TopSongsPage";
 import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
 import AuthProvider from "./context/AuthContext";
-import PlaylistTimeline from "./pages/PlaylistTimeline/PlaylistTimeline";
+import PlaylistTimelinePage from "./pages/PlaylistTimeline/PlaylistTimelinePage";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path='login' element={<LoginPage />} />
           <Route path='topsongs' element={<TopSongsPage />} />
           <Route path='artists' element={<ArtistMeterPage />} />
-		  <Route path='timeline' element={<PlaylistTimeline/>}/>
+		  <Route path='playlist-timeline' element={<PlaylistTimelinePage/>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

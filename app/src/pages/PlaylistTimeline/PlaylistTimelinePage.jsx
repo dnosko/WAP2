@@ -3,13 +3,13 @@ import ArrowButton from '../../components/ArrowButton';
 import '../../css/timeline.css';
 import { useEffect, useRef, useState } from 'react';
 import { getUserPlaylists } from '../../api/playlistsApi';
-import { getTimelineItems } from './timelineModel';
+import { getTimelineItems } from './playlistTimeline';
 import Timeline from '../../components/Timeline';
 import cubes from '../../assets/cubes.jpg'
 import Dropdown from '../../components/Dropdown';
 
 
-export default function PlaylistTimeline(props) {
+export default function PlaylistTimelinePage(props) {
 	const scrl = useRef(null);
 	const [playlists, setPlaylists] = useState([]);
 	const [timelineItems, setTimelineItems] = useState([]);
