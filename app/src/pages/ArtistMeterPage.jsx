@@ -24,7 +24,7 @@ export function ArtistMeterPage(props) {
         </>
       <div className='bottom'>
         <ArrowButton link='/topsongs' direction='left'></ArrowButton>
-        <ArrowButton link='/' direction='right'></ArrowButton>
+        <ArrowButton link='/timeline' direction='right'></ArrowButton>
       </div>
     </div>
 	</Auth>
