@@ -58,8 +58,8 @@ export default function PlaylistTimeline(props) {
 				<button className='timeline-slider right'  onClick={() => slide(600)}>{'>'}</button>
 			</div>
 			<div className='bottom'>
-				<ArrowButton link='/' direction='left'></ArrowButton>
-				<ArrowButton link='/artists' direction='right'></ArrowButton>
+				<ArrowButton link='/artists' direction='left'></ArrowButton>
+				<ArrowButton link='/' direction='right'></ArrowButton>
 			</div>
 		</div>
 		</Auth>

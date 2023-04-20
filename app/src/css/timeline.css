@@ -9,12 +9,12 @@
 }
 
 .timeline {
-	
 	color: #E45231;
 	text-shadow:  3px 2px #9E1D3D;
 }
 
 .timeline-content {
+	color: black;
 	margin-top: 10px;
 	display: flex;
 	flex-direction: row;
