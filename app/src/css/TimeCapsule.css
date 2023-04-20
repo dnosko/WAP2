@@ -1,0 +1,91 @@
+
+table.recommendations{
+    background-color: #8d1affc5;
+    color: white;
+    box-shadow: 0 2px 20px 0 #000000, 0 6px 200px 0 #8dff1aa1;
+    border-radius: 0.5rem;
+    width: 20rem;
+    height: 30rem;
+    margin-bottom: -6rem;
+    padding-top: 0rem;
+}
+
+a.recommendations{
+    color: white
+}
+
+.grid-container.time-capsule{
+    margin-top: 1rem;
+}
+
+img.album.recommendation{
+    height: 3.5rem;
+}
+
+td.albumImg{
+    margin-right: 2rem;
+    margin-left: 1rem;
+}
+
+.recommendations-border{
+    border-top: 1px solid rgb(185, 185, 185);
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+    padding-top:0.5rem
+}
+
+button.time-capsule{
+    color:#80ff00;
+    font-size: larger;
+    font-weight: bolder;
+    background-color:  #8B1AFF;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+img.heart{
+    height: 2.5rem;
+    margin-right: 0rem;
+    margin-bottom: -1rem;
+}
+
+h2.time-capsule{
+    margin-top: -1rem;
+    padding-bottom: 3rem;
+    text-shadow:  3px 2px #401eff;
+}
+
+h3.time-capsule{
+    color: #ffffff;
+    font-size: 3rem;
+    background-color: transparent;
+    margin-bottom: -2rem;
+    margin-top: 0.5rem;
+    width: 10rem;
+    margin-left: 30%;
+    text-shadow:  3px 3px #000000;
+}
+
+th.recommendation{
+    padding-top: 0rem;
+    margin-bottom: -5rem;
+    height: 2rem;
+    align-items: center;
+}
+
+tr.heading.recommendation{
+    padding-top: 0rem;
+    margin-bottom: -5rem;
+    height: 1rem;
+}
+
+td.heart{
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+}
+
+img.refresh.recommendation{
+    height: 2rem;
+    margin-left: 78%;
+    margin-bottom: 1rem;
+}

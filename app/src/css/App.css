@@ -94,7 +94,7 @@ h2.top-songs{
 }
 
 .grid-container {
-  /*border: 1px solid black;*/
+  /*border: 1px solid firebrick;*/
   display: grid;
   grid: 32rem / auto auto auto;
   grid-gap:10rem;
@@ -222,4 +222,11 @@ h3.artist-meter{
   left: 50%;
   width: 50%;
   text-align: center;
+}
+
+img.logout{
+  position: fixed;
+  height: 2.5rem;
+  margin-top: calc(-5vw);
+  margin-left: calc(45vw);
 }

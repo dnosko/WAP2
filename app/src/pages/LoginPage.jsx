@@ -5,6 +5,7 @@ import "../css/LoginPage.css";
 function LoginPage() {
   document.getElementById("body").style.background = "white";
   document.getElementById("body").style.color = "#242424";
+  document.getElementById("body").style.backgroundRepeat = "no-repeat";
 
   return (
     <div className='App'>
