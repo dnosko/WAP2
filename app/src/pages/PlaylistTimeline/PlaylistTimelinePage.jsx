@@ -12,14 +12,14 @@ export default function PlaylistTimelinePage(props) {
   const scrl = useRef(null);
   const [playlists, setPlaylists] = useState([]);
   const [timelineItems, setTimelineItems] = useState([]);
-  const [currentPlaylist, setCurrentPlaylist] = useState(undefined);
+  const [currentPlaylist, setCurrentPlaylist] = useState({id: undefined, name: ''});
 
   useEffect(() => {
     const getItems = async () => {
       const items = await getUserPlaylists(5);
       if (items) {
         setPlaylists(items.map((i) => ({ name: i.name, id: i.id })));
-        setCurrentPlaylist(items[0].id);
+        setCurrentPlaylist({name: items[0].name, id: items[0].id});
       }
     };
     getItems();
@@ -27,7 +27,7 @@ export default function PlaylistTimelinePage(props) {
 
   useEffect(() => {
     const getItems = async () => {
-      const items = await getTimelineItems(currentPlaylist);
+      const items = await getTimelineItems(currentPlaylist.id);
       if (items) {
         setTimelineItems(items);
         scrl.current.scrollLeft = 0;
@@ -48,7 +48,7 @@ export default function PlaylistTimelinePage(props) {
     <Auth>
       <div className='playlist-timeline'>
         <h1 className='timeline'>Pick Your Playlist</h1>
-        <Dropdown items={playlists} onSelect={setCurrentPlaylist} />
+        <Dropdown select={currentPlaylist} items={playlists} onSelect={setCurrentPlaylist} />
         <div className='timeline-content'>
           <button className='timeline-slider left' onClick={() => slide(-600)}>
             {"<"}
