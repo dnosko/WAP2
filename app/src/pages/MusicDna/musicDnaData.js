@@ -1,28 +1,34 @@
-import { useEffect, useState } from "react";
-import Auth from "../components/Auth";
-import { getDnaCategory } from "../components/musicDna";
-import '../css/musicDna.css';
-import cloud from '../assets/cloud_white.svg';
-import fist from '../assets/fist_white.svg';
-import footprints from '../assets/footprints_white.svg';
-import glass from '../assets/magn_glass_white.svg';
-import storm_swirl from '../assets/storm_white.svg';
-import wing from '../assets/wing_white.svg';
-import DnaChart from "../components/DnaChart";
-import maverick from '../assets/maverick.jpg';
-import sage from '../assets/sage.jpg';
-import storm from '../assets/storm.jpg';
-import rebel from '../assets/rebel.jpg';
-import explorer from '../assets/explorer.jpg';
-import dreamer from '../assets/dreamer.jpg';
-import { explorerDesc, maverickDesc, rebelDesc, sageDesc, stormDesc, wandererDesc } from "./categoryDescriptions";
-import ArrowButton from "../components/ArrowButton";
+import cloud from '../../assets/cloud_white.svg';
+import fist from '../../assets/fist_white.svg';
+import footprints from '../../assets/footprints_white.svg';
+import glass from '../../assets/magn_glass_white.svg';
+import storm_swirl from '../../assets/storm_white.svg';
+import wing from '../../assets/wing_white.svg';
+import maverick from '../../assets/maverick.jpg';
+import sage from '../../assets/sage.jpg';
+import storm from '../../assets/storm.jpg';
+import rebel from '../../assets/rebel.jpg';
+import explorer from '../../assets/explorer.jpg';
+import dreamer from '../../assets/dreamer.jpg';
 
 const fVal = {
 	low: 0,
 	moderate: 1,
 	high: 2,
 }
+
+const wandererDesc = "You value introspection and emotional expression in your music, enjoy the mellow and laid-back sound that is conducive to relaxation and reflection. You may also appreciate the natural and organic sound of acoustic instruments, and prefer music that is not too loud or overwhelming."
+
+const explorerDesc = "You value precision and technical skill in the instrumentation, and prefer music that is driven by electronic elements. You may also appreciate the positive and energetic nature of the music, and use it as a way to motivate yourself or enhance your mood."
+
+const rebelDesc = "You value lyrics that are bold, expressive, and attention-grabbing. The raw and unfiltered nature of the vocals can add a sense of authenticity and urgency to the music. You appreciate the fast-paced and intense nature of the music, and use it as a way to release stress, aggression, or frustration."
+
+const sageDesc = "You value the emotional depth and authenticity of acoustic music. You may appreciate the way that the lyrics and vocals are the main focus of the music, allowing for a greater sense of connection and meaning. You are drawn to the positive and uplifting nature of the music, and use it as a way to lift your spirits or find solace in difficult times."
+
+const stormDesc = "You value introspection and emotional depth in your music. Dark and moody music can reflect the complexities of the human experience, and provide a sense of catharsis and understanding. You are drawn to the slower and brooding quality of the music, and use it as a way to process difficult emotions."
+
+const maverickDesc = "You value experimentation and diversity in your musical tastes and appreciate the way that music can challenge your expectations and push you out of your comfort zone. You are drawn to the sheer variety and unpredictability of music, and use it as a way to explore new emotions, experiences, and perspectives."
+
 
 const unmatched = {
 	title: "Musical Maverick",
@@ -156,80 +162,4 @@ const categories = [
 	},
 ]
 
-function MusicDna(props) {
-	const [loading, setLoading] = useState(true);
-	const [category, setCategory] = useState(unmatched);
-	const [songs, setSongs] = useState([]);
-	const [avg, setAvg] = useState([]);
-
-	useEffect(() => {
-		const getIt = async () => {
-			const res = await getDnaCategory(categories, unmatched);
-			if (res) {
-				setCategory(res.category);
-				setSongs(res.representatives);
-				setAvg(res.avg);
-				setLoading(false);
-			}
-		}
-		getIt();
-	}, []);
-
-	useEffect(() => {
-		document.documentElement.style.setProperty('--background-color', category.backgroundColor);
-		document.documentElement.style.setProperty('--text-shadow', category.textShadow);
-		document.documentElement.style.setProperty('--box-shadow', category.boxShadow);
-		document.documentElement.style.setProperty('--color', category.color);
-		document.getElementById("body").style.backgroundImage = category.backgroundImg;
-		document.getElementById("body").style.backgroundSize = 'cover';
-	}, [category])
-
-	document.getElementById("body").style.backgroundRepeat = 'no-repeat';
-
-	const songItems = songs.map((song, index) => (
-		<div
-		  className={`row card song${index == 0 ? "" : " top-border"}`}
-		  key={song.id}
-		>
-		  <div className='albumImg'>
-			<img className='album' src={song.album.images[2].url}></img>
-		  </div>
-		  <div className='songscard'>
-			<a className='song text'>
-			  {song.name} - {song.album.artists[0].name}
-			</a>
-		  </div>
-		</div>
-	  ));
-
-	return ( 
-		<Auth>
-			<div className="container">	
-				<ArrowButton link='/artists' direction='left'></ArrowButton>
-				
-				{loading ? <h1 className="loading">Loading your Music DNA analysis...</h1> :
-					<div className={`user-dna-content ${category.backgroundClass}`}>
-						<h3>Your Music DNA is</h3> 
-						<img src={category.icon} className='dna-icon'></img>
-						<h1>{category.title}</h1>
-						<p>{category.description}</p>
-						<div className='dna-detail'>
-							<div className="card-desc">
-							Checkout your genetic makeup
-							<DnaChart avg={avg} colors={category.graphColors}/>
-							</div>
-							<div className='rectangle-card-dna text card-desc'>
-								These songs are just so YOU
-								<div className='rectangle-card-dna'>{songItems}</div>
-							</div>
-						</div>
-					</div>
-				}
-				<ArrowButton link='/' direction='right'></ArrowButton>
-			</div>
-		</Auth>
-	)
-}
-
-export default MusicDna;
-export {fVal};
+export {fVal, unmatched, categories};

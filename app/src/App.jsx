@@ -6,7 +6,7 @@ import { TopSongsPage } from "./pages/TopSongsPage";
 import { ArtistMeterPage } from "./pages/ArtistMeterPage";
 import "./css/App.css";
 import AuthProvider from "./context/AuthContext";
-import MusicDna from "./pages/MusicDna";
+import MusicDnaPage from "./pages/MusicDna/MusicDnaPage";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
 				<Route path='login' element={<LoginPage />} />
 				<Route path='topsongs' element={<TopSongsPage />} />
 				<Route path='artists' element={<ArtistMeterPage />} />
-				<Route path='mood' element={<MusicDna />} />
+				<Route path='music-dna' element={<MusicDnaPage />} />
 			</Routes>
 		</BrowserRouter>
 	</AuthProvider>

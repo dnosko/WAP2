@@ -1,6 +1,6 @@
-import { getTopTracks, getTracksFeatures } from "../api/tracksApi";
-import { average } from "../utils";
-import { fVal } from "../pages/MusicDna";
+import { getTopTracks, getTracksFeatures } from "../../api/tracksApi";
+import { average } from "../../utils";
+import { fVal } from "./musicDnaData";
 
 async function getDnaCategory(categories, unmatched) {
 	const tracks = await getTopTracks(100, 'long_term');
