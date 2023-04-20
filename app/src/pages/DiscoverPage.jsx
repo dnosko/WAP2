@@ -6,6 +6,7 @@ import { getFeatures } from "../api/tracksApi";
 import "../css/TimeCapsule.css";
 import { useEffect } from "react";
 import Logout from "../components/Logout";
+import PageWrapper from "../components/PageWrapper";
 
 export function DiscoverPage(props) {
   let [showTime, setShowTime] = useState(0);
@@ -29,9 +30,8 @@ export function DiscoverPage(props) {
   }, []);
 
   return (
-    <Auth>
-      <Logout darkMode={false} />
-      <div className='App'>
+	<PageWrapper left='/playlist-timeline' right='/'>
+		<div className='App'>
         <h1 className='top-songs'>Time Capsule!</h1>
         <h2 className='time-capsule'>Songs across time matching your taste</h2>
         {showTime === 0 ? (
@@ -76,11 +76,7 @@ export function DiscoverPage(props) {
             </div>
           </>
         )}
-        <div className='bottom'>
-          <ArrowButton link='/artists' direction='left'></ArrowButton>
-          <ArrowButton link='/' direction='right'></ArrowButton>
-        </div>
-      </div>
-    </Auth>
+		</div>
+	</PageWrapper>
   );
 }

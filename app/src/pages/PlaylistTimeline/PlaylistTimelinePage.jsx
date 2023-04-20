@@ -7,6 +7,7 @@ import { getTimelineItems } from "./playlistTimeline";
 import Timeline from "../../components/Timeline";
 import cubes from "../../assets/cubes.jpg";
 import Dropdown from "../../components/Dropdown";
+import PageWrapper from "../../components/PageWrapper";
 
 export default function PlaylistTimelinePage(props) {
   const scrl = useRef(null);
@@ -45,26 +46,22 @@ export default function PlaylistTimelinePage(props) {
   document.getElementById("body").style.backgroundSize = "cover";
 
   return (
-    <Auth>
-      <div className='playlist-timeline'>
-        <h1 className='timeline'>Pick Your Playlist</h1>
-        <Dropdown items={playlists} onSelect={setCurrentPlaylist} />
-        <div className='timeline-content'>
-          <button className='timeline-slider left' onClick={() => slide(-600)}>
-            {"<"}
-          </button>
-          <div className='timeline-box' ref={scrl}>
-            <Timeline items={timelineItems} />
-          </div>
-          <button className='timeline-slider right' onClick={() => slide(600)}>
-            {">"}
-          </button>
-        </div>
-        <div className='bottom'>
-          <ArrowButton link='/music-dna' direction='left'></ArrowButton>
-          <ArrowButton link='/discover' direction='right'></ArrowButton>
-        </div>
-      </div>
-    </Auth>
+	<PageWrapper left='/music-dna' right='/discover'>
+		<div className='playlist-timeline'>
+			<h1 className='timeline'>Pick Your Playlist</h1>
+			<Dropdown items={playlists} onSelect={setCurrentPlaylist} />
+			<div className='timeline-content'>
+			<button className='timeline-slider left' onClick={() => slide(-600)}>
+				{"<"}
+			</button>
+			<div className='timeline-box' ref={scrl}>
+				<Timeline items={timelineItems} />
+			</div>
+			<button className='timeline-slider right' onClick={() => slide(600)}>
+				{">"}
+			</button>
+			</div>
+		</div>
+	</PageWrapper>
   );
 }
