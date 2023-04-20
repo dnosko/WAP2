@@ -1,9 +1,6 @@
-import ArrowButton from "../components/ArrowButton";
 import { React } from "react";
 import ArtistMeter from "../components/ArtistMeter";
 import cloud from "../assets/cloud2.png";
-import Auth from "../components/Auth";
-import Logout from "../components/Logout";
 import PageWrapper from "../components/PageWrapper";
 
 export function ArtistMeterPage(props) {

@@ -1,9 +1,6 @@
-import ArrowButton from "../components/ArrowButton";
 import { React } from "react";
 import Songs from "../components/Songs";
 import wave from "../assets/vecteezy_abstract-colorful-wave.png";
-import Auth from "../components/Auth";
-import Logout from "../components/Logout";
 import PageWrapper from "../components/PageWrapper";
 
 export function TopSongsPage(props) {

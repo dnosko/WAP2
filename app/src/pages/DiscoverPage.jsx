@@ -1,11 +1,8 @@
-import ArrowButton from "../components/ArrowButton";
 import { React, useState } from "react";
-import Auth from "../components/Auth";
 import TimeCapsule from "../components/TimeCapsule";
 import { getFeatures } from "../api/tracksApi";
 import "../css/TimeCapsule.css";
 import { useEffect } from "react";
-import Logout from "../components/Logout";
 import PageWrapper from "../components/PageWrapper";
 
 export function DiscoverPage(props) {
