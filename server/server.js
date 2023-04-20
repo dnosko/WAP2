@@ -19,6 +19,7 @@ const scopes = [
   "user-read-email",
   "user-top-read",
   "user-read-recently-played",
+  "playlist-read-private",
 ];
 var header = {
   Authorization:

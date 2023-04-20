@@ -76,7 +76,7 @@ function MusicDnaPage(props) {
 						</div>
 					</div>
 				}
-				<ArrowButton link='/' direction='right'></ArrowButton>
+				<ArrowButton link='/playlist-timeline' direction='right'></ArrowButton>
 			</div>
 		</Auth>
 	)
