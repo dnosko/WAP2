@@ -5,7 +5,7 @@ export default function Songs(props) {
   const limit = 5;
 
   return (
-    <div className='grid-container'>
+    <div className='grid-container top-songs'>
       <div className='all-time-songs'>
         <TopSongsCard
           token={props.token}

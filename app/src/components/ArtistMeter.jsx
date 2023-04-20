@@ -67,8 +67,7 @@ export default function ArtistMeter(props) {
           <a className='artist-meter'>{text.content}</a>
         </div>
       </div>
-      <div className='vl center'> </div>
-      <div className='artist-meter offset'>
+      <div className='grid-container artist'>
         <ArtistMeterCategories
           artists={artists}
           popularity={popularity}
