@@ -13,11 +13,11 @@ export function TopSongsPage(props) {
   document.getElementById("body").style.animation = "none";
 
   return (
-	<PageWrapper left='/' right='/artists'>
-		<div className='App'>
-			<h1 className='top-songs'>These songs are your favorite!</h1>
-			<Songs />
-		</div>
-	</PageWrapper>
+    <PageWrapper left='/' right='/artists'>
+      <div className='App'>
+        <h1 className='top-songs'>These songs are your favorite!</h1>
+        <Songs />
+      </div>
+    </PageWrapper>
   );
 }

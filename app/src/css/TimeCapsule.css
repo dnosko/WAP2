@@ -6,8 +6,11 @@ table.recommendations{
     border-radius: 0.5rem;
     width: 20rem;
     height: 30rem;
-    margin-bottom: -6rem;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
     padding-top: 0rem;
+    align-items: center;
+    justify-content: normal;
 }
 
 a.recommendations{
@@ -15,7 +18,10 @@ a.recommendations{
 }
 
 .grid-container.time-capsule{
-    margin-top: 1rem;
+    margin-top: -1rem;
+    justify-content: normal;
+    align-items: center;
+    display: flex;
 }
 
 img.album.recommendation{
@@ -62,7 +68,7 @@ h3.time-capsule{
     margin-bottom: -2rem;
     margin-top: 0.5rem;
     width: 10rem;
-    margin-left: 30%;
+    margin-left: 7.5rem;
     text-shadow:  3px 3px #000000;
 }
 

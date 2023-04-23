@@ -13,13 +13,13 @@ export function ArtistMeterPage(props) {
     "animatedBackground 6000s linear infinite normal";
 
   return (
-	<PageWrapper left='/topsongs' right='/music-dna'>
-		<div className='App'>
-			<>
-			<h1 className='top-songs'>Artist Meter!</h1>
-			<ArtistMeter></ArtistMeter>
-			</>
-		</div>
-	</PageWrapper>
+    <PageWrapper left='/topsongs' right='/music-dna'>
+      <div className='container'>
+        <div className='content-artist-meter'>
+          <h1 className='top-songs'>Artist Meter!</h1>
+          <ArtistMeter></ArtistMeter>
+        </div>
+      </div>
+    </PageWrapper>
   );
 }

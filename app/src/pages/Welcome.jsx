@@ -17,8 +17,6 @@ import saturn from "../assets/saturn-svgrepo-com.svg";
 import uranus from "../assets/uranus-svgrepo-com.svg";
 import venus from "../assets/venus-svgrepo-com.svg";
 
-
-
 export function Welcome(props) {
   const [loading, setLoading] = useState(true);
   const { auth, setState } = useContext(AuthContext);
