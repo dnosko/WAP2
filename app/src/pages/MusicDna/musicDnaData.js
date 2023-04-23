@@ -47,15 +47,7 @@ const unmatched = {
 const categories = [
 	{
 		title: "Dreamy Wanderer",
-		description: wandererDesc, 
-		// features: {
-		// 	acousticness: [fVal.high],
-		// 	energy: [fVal.low, fVal.moderate], 
-		// 	instrumentalness: [fVal.moderate],
-		// 	speechiness: [fVal.low],
-		// 	valence: [fVal.moderate, fVal.high],
-		// 	tempo: [fVal.moderate] 
-		// },
+		description: wandererDesc,
 		features: {
 			acousticness: [fVal.high],
 			energy: [fVal.low, fVal.moderate],
@@ -72,14 +64,6 @@ const categories = [
 		
 	},{
 		title: "Electric Explorer",
-		// features: {
-		// 	acousticness: [fVal.low, fVal.moderate],
-		// 	energy: [fVal.high], 
-		// 	instrumentalness: [fVal.high],
-		// 	speechiness: [fVal.low],
-		// 	valence: [fVal.moderate, fVal.high],
-		// 	tempo: [fVal.high] 
-		// },
 		features: {
 			energy: [fVal.high], 
 			valence: [fVal.moderate, fVal.high],
@@ -96,14 +80,6 @@ const categories = [
 		graphColors: ['#df0983', '#ffd800', '#212143']
 	},{
 		title:  "Rhytmic Rebel",
-		// features: {
-		// 	acousticness: [fVal.low],
-		// 	energy: [fVal.high], 
-		// 	instrumentalness: [fVal.low],
-		// 	speechiness: [fVal.moderate, fVal.high],
-		// 	valence: [fVal.moderate, fVal.low],
-		// 	tempo: [fVal.high] 
-		// },
 		features: {
 			acousticness: [fVal.low, fVal.moderate],
 			energy: [fVal.high],
@@ -138,14 +114,6 @@ const categories = [
 		graphColors: ['#61a37f', '#0e1d24', '#c5de8a']
 	},{
 		title: "Brooding Storm",
-		// features: {
-		// 	acousticness: [fVal.low],
-		// 	energy: [fVal.low, fVal.moderate], 
-		// 	instrumentalness: [fVal.low, fVal.moderate],
-		// 	speechiness: [fVal.moderate],
-		// 	valence: [fVal.low, fVal.moderate],
-		// 	tempo: [fVal.low, fVal.moderate] 
-		// },
 		features: {
 			energy: [fVal.low, fVal.moderate], 
 			valence: [fVal.low, fVal.moderate, fVal.high],
