@@ -11,14 +11,17 @@ export default function PlaylistTimelinePage(props) {
   const scrl = useRef(null);
   const [playlists, setPlaylists] = useState([]);
   const [timelineItems, setTimelineItems] = useState([]);
-  const [currentPlaylist, setCurrentPlaylist] = useState({id: undefined, name: ''});
+  const [currentPlaylist, setCurrentPlaylist] = useState({
+    id: undefined,
+    name: "",
+  });
 
   useEffect(() => {
     const getItems = async () => {
       const items = await getUserPlaylists(5);
       if (items) {
         setPlaylists(items.map((i) => ({ name: i.name, id: i.id })));
-        setCurrentPlaylist({name: items[0].name, id: items[0].id});
+        setCurrentPlaylist({ name: items[0].name, id: items[0].id });
       }
     };
     getItems();
@@ -44,22 +47,26 @@ export default function PlaylistTimelinePage(props) {
   document.getElementById("body").style.backgroundSize = "cover";
 
   return (
-	<PageWrapper left='/music-dna' right='/discover'>
-		<div className='playlist-timeline'>
-			<h1 className='timeline'>Pick Your Playlist</h1>
-			<Dropdown select={currentPlaylist} items={playlists} onSelect={setCurrentPlaylist} />
-			<div className='timeline-content'>
-			<button className='timeline-slider left' onClick={() => slide(-600)}>
-				{"<"}
-			</button>
-			<div className='timeline-box' ref={scrl}>
-				<Timeline items={timelineItems} />
-			</div>
-			<button className='timeline-slider right' onClick={() => slide(600)}>
-				{">"}
-			</button>
-			</div>
-		</div>
-	</PageWrapper>
+    <PageWrapper left='/music-dna' right='/discover'>
+      <div className='playlist-timeline'>
+        <h1 className='timeline'>Pick Your Playlist</h1>
+        <Dropdown
+          select={currentPlaylist}
+          items={playlists}
+          onSelect={setCurrentPlaylist}
+        />
+        <div className='timeline-content'>
+          <button className='timeline-slider left' onClick={() => slide(-600)}>
+            {"<"}
+          </button>
+          <div className='timeline-box' ref={scrl}>
+            <Timeline items={timelineItems} />
+          </div>
+          <button className='timeline-slider right' onClick={() => slide(600)}>
+            {">"}
+          </button>
+        </div>
+      </div>
+    </PageWrapper>
   );
 }

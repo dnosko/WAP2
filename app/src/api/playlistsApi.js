@@ -6,7 +6,6 @@ function getUserPlaylists(limit) {
 	});
 	return authorizedAxios.get(`https://api.spotify.com/v1/me/playlists?${searchParams.toString()}`)
 		.then((res) => {
-			console.log(res);
 			return res.data.items;
 		})
 		.catch((err) => {
@@ -20,7 +19,6 @@ function getPlaylistItems(id) {
 	});
 	return authorizedAxios.get(`https://api.spotify.com/v1/playlists/${id}`)
 		.then((res) => {
-			console.log(res);
 			return res.data.tracks.items;
 		})
 		.catch((err) => {
@@ -28,4 +26,4 @@ function getPlaylistItems(id) {
 		});
 }
 
-export {getUserPlaylists, getPlaylistItems};
+export { getUserPlaylists, getPlaylistItems };

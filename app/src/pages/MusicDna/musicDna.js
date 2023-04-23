@@ -10,21 +10,21 @@ async function getDnaCategory(categories, unmatched) {
 
 	const featureAvgs = {
 		energy: average(features.map(f => f.energy)),
-		acoustic: average(features.map(f => f.acousticness)), 
+		acoustic: average(features.map(f => f.acousticness)),
 		dance: average(features.map(f => f.danceability)),
 		valence: average(features.map(f => f.valence)),
 		tempo: normaliseTempo(average(features.map(f => f.tempo)))
 	};
 	const featureGrades = {
 		energy: getFeatureGrade(average(features.map(f => f.energy))),
-		acousticness: getFeatureGrade(average(features.map(f => f.acousticness))), 
+		acousticness: getFeatureGrade(average(features.map(f => f.acousticness))),
 		danceability: getFeatureGrade(average(features.map(f => f.danceability))),
 		speechiness: getFeatureGrade(average(features.map(f => f.speechiness))),
 		valence: getFeatureGrade(average(features.map(f => f.valence))),
-		tempo:  getFeatureGrade(normaliseTempo(average(features.map(f => f.tempo)))),
+		tempo: getFeatureGrade(normaliseTempo(average(features.map(f => f.tempo)))),
 	};
 	const cat = findCategory(featureGrades, categories, unmatched);
-	const repre = cat.title == 'Musical Maverick' ? tracks.slice(0,3) : getDnaRepresentatives(tracks, features, cat);
+	const repre = cat.title == 'Musical Maverick' ? tracks.slice(0, 3) : getDnaRepresentatives(tracks, features, cat);
 
 	return {
 		category: cat,
@@ -34,7 +34,7 @@ async function getDnaCategory(categories, unmatched) {
 }
 
 function normaliseTempo(tempo) {
-	return tempo > 130 ? 1 : tempo/130;
+	return tempo > 130 ? 1 : tempo / 130;
 }
 
 function findCategory(value, categories, unmatched) {
@@ -44,7 +44,6 @@ function findCategory(value, categories, unmatched) {
 		}
 		return true;
 	});
-	console.log(cat)
 	if (cat.length < 1) { return unmatched; }
 	else return cat[0];
 }
@@ -64,18 +63,18 @@ function getDnaRepresentatives(tracks, features, category) {
 	for (let f of features) {
 		const songFeats = {
 			energy: getFeatureGrade(f.energy),
-			acousticness: getFeatureGrade(f.acousticness), 
+			acousticness: getFeatureGrade(f.acousticness),
 			danceability: getFeatureGrade(f.danceability),
 			speechiness: getFeatureGrade(f.speechiness),
 			valence: getFeatureGrade(f.valence),
-			tempo:  getFeatureGrade(f.tempo, true),
+			tempo: getFeatureGrade(f.tempo, true),
 		};
 		var add = true;
 		for (const [key, val] of Object.entries(category.features)) {
 			if (!fitsFeature(val, songFeats[key])) {
 				add = false;
 				break;
-			} 
+			}
 		}
 		if (add) {
 			result.push(f.id);
@@ -85,4 +84,4 @@ function getDnaRepresentatives(tracks, features, category) {
 	return tracks.filter(t => result.includes(t.id));
 }
 
-export {getDnaCategory};
+export { getDnaCategory };

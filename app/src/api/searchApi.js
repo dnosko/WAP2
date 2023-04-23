@@ -9,7 +9,6 @@ async function search(type = 'track', range = '2022', limit = 5, offset = 0) {
     });
     return authorizedAxios.get(`https://api.spotify.com/v1/search?${searchParams.toString()}`)
         .then((res) => {
-            console.log(res);
             return res.data;
         })
         .catch((err) => {

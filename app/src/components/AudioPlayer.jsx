@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useRef } from "react";
+import { React, useRef } from "react";
 import "../css/TimeCapsule.css";
 
 export default function AudioPlayer(props) {
@@ -9,7 +9,7 @@ export default function AudioPlayer(props) {
       // check if audio is ready to play
       audioRef.current.play();
     } else {
-      audioRef.current.addEventListener("canplaythrough", () => {
+      audioRef.current.addEventListener("canplay", () => {
         // wait for audio to be ready to play
         audioRef.current.play();
       });
@@ -21,7 +21,7 @@ export default function AudioPlayer(props) {
       // check if audio is ready to pause
       audioRef.current.pause();
     } else {
-      audioRef.current.addEventListener("canplaythrough", () => {
+      audioRef.current.addEventListener("canplay", () => {
         // wait for audio to be ready to pause
         audioRef.current.pause();
       });

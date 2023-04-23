@@ -25,11 +25,9 @@ async function recommendations(seeds, limit = 5, params) {
             ...params
         }
         searchParams = new URLSearchParams(combinedParams)
-        console.log(combinedParams)
     }
     return authorizedAxios.get(`https://api.spotify.com/v1/recommendations?${searchParams.toString()}`)
         .then((res) => {
-            console.log(res);
             return res.data;
         })
         .catch((err) => {

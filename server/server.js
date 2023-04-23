@@ -68,7 +68,6 @@ app.get("/callback", function (req, res) {
   }
 
   res.clearCookie(stateKey);
-  console.log(header);
 
   axios
     .post(
@@ -81,10 +80,9 @@ app.get("/callback", function (req, res) {
       { headers: header }
     )
     .then((response) => {
-      console.log(response.data);
       access_token = response.data.access_token;
       refresh_token = response.data.refresh_token;
-	  res.redirect(app_url + '?token=' + access_token);
+      res.redirect(app_url + '?token=' + access_token);
     })
     .catch((err) => {
       console.log("error: ", err);
@@ -97,18 +95,6 @@ app.get("/token", function (req, res) {
     access_token: access_token,
     refresh_token: refresh_token,
   });
-  /*axios
-    .get("http://localhost:3001/refresh")
-    .then((response) => {
-      res.json({
-        access_token: response.data.access_token,
-        refresh_token: refresh_token,
-      });
-    })
-    .catch((err) => {
-      console.log("error: ", err);
-      res.status(500).json({ message: "Internal server error" });
-    });*/
 });
 
 app.get("/refresh", function (req, res) {
@@ -126,8 +112,8 @@ app.get("/refresh", function (req, res) {
         access_token: access_token,
       });
     }).catch(err => {
-		res.status(err.response.status).json({ message: err.response.data });
-	});
+      res.status(err.response.status).json({ message: err.response.data });
+    });
 });
 
 

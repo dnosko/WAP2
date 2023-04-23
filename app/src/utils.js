@@ -13,7 +13,6 @@ const quantile = (arr, q) => {
     const sorted = arr.sort((a, b) => a - b);;
     let pos = (sorted.length - 1) * q;
     pos = Math.floor(pos);
-    console.log(sorted);
     if (sorted[pos + 1] !== undefined) {
         return (sorted[pos] + sorted[pos + 1]) / 2;
     } else {
