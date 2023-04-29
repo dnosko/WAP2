@@ -56,7 +56,7 @@ async function getTracksFeatures(trackIds) {
 
 /* Gets specific features of 50 all time top tracks ready for recommendation request */
 async function getFeatures() {
-	const tracks = await getTopTracks(50, 'long_term');
+	const tracks = await getTopTracks(50, 'medium_term');
 	const features = await getTracksFeatures(tracks.map(t => t.id));
 
 	const danceability = features.map(f => f.danceability);
