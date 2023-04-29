@@ -12,11 +12,11 @@ Eva Moresová - xmores00 <br />
 #### Run server:
 
 `cd server` <br />
-`npm -i ` <br />
+`npm install ` <br />
 `npm start`
 
 #### Run app:
 
 `cd app` <br />
-`npm -i ` <br />
+`npm install ` <br />
 `npm run dev`
